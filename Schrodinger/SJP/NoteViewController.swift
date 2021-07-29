@@ -1,21 +1,14 @@
 //
-//  DetailItemViewController.swift
+//  NoteViewController.swift
 //  Schrodinger
 //
-//  Created by ido on 2021/07/29.
+//  Created by 송정평 on 2021/07/29.
 //
 
 import UIKit
 
-class DetailItemViewController: UIViewController {
+class NoteViewController: UIViewController {
 
-    
-    @IBOutlet weak var D_imageView: UIImageView!
-    
-    @IBOutlet weak var D_lbl_item: UILabel!
-    @IBOutlet weak var D_lbl_thrown: UILabel!
-    @IBOutlet weak var D_lbl_purchases: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
