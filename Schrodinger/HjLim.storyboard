@@ -28,12 +28,16 @@
                                     <segment title="버린물건"/>
                                     <segment title="모든 물건"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" systemColor="systemGreenColor"/>
+                                <connections>
+                                    <action selector="SegmentControl:" destination="vCo-Hu-UsE" eventType="valueChanged" id="Bzt-dV-U1I"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OAG-TM-e2M">
                                 <rect key="frame" x="15" y="169" width="384" height="622"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="S5G-sz-e6r">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="S5G-sz-e6r">
                                         <rect key="frame" x="0.0" y="24.5" width="384" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S5G-sz-e6r" id="mxk-p6-nXB">
@@ -61,6 +65,11 @@
                             <constraint firstItem="d5H-KM-DAQ" firstAttribute="bottom" secondItem="1BW-Qa-sLu" secondAttribute="bottom" constant="759" id="rpu-T8-vbT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="SearchBar" destination="1BW-Qa-sLu" id="dTh-0a-NgR"/>
+                        <outlet property="SegmentControl" destination="DtP-cV-1xr" id="9uq-XK-fb7"/>
+                        <outlet property="listTableView" destination="OAG-TM-e2M" id="d8K-nO-lTG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oh9-tg-Bph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,6 +79,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
