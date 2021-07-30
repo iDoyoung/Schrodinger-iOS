@@ -16,13 +16,55 @@
                     <view key="view" contentMode="scaleToFill" id="T4I-3i-tNc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1BW-Qa-sLu">
+                                <rect key="frame" x="16" y="44" width="382" height="59"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DtP-cV-1xr">
+                                <rect key="frame" x="20" y="122" width="374" height="28"/>
+                                <segments>
+                                    <segment title="보유물건"/>
+                                    <segment title="버린물건"/>
+                                    <segment title="모든 물건"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OAG-TM-e2M">
+                                <rect key="frame" x="15" y="169" width="384" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="S5G-sz-e6r">
+                                        <rect key="frame" x="0.0" y="24.5" width="384" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S5G-sz-e6r" id="mxk-p6-nXB">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="d5H-KM-DAQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d5H-KM-DAQ" firstAttribute="bottom" secondItem="DtP-cV-1xr" secondAttribute="bottom" constant="713" id="Aji-DH-rjq"/>
+                            <constraint firstItem="d5H-KM-DAQ" firstAttribute="trailing" secondItem="OAG-TM-e2M" secondAttribute="trailing" constant="15" id="JAW-NB-Yj0"/>
+                            <constraint firstItem="d5H-KM-DAQ" firstAttribute="bottom" secondItem="OAG-TM-e2M" secondAttribute="bottom" constant="71" id="LLW-K2-B7e"/>
+                            <constraint firstItem="1BW-Qa-sLu" firstAttribute="top" secondItem="d5H-KM-DAQ" secondAttribute="top" id="Lbz-Cr-aQt"/>
+                            <constraint firstItem="d5H-KM-DAQ" firstAttribute="trailing" secondItem="DtP-cV-1xr" secondAttribute="trailing" constant="20" id="Nmn-u9-z8g"/>
+                            <constraint firstItem="d5H-KM-DAQ" firstAttribute="trailing" secondItem="1BW-Qa-sLu" secondAttribute="trailing" constant="16" id="Rxi-aS-j0e"/>
+                            <constraint firstItem="DtP-cV-1xr" firstAttribute="leading" secondItem="d5H-KM-DAQ" secondAttribute="leading" constant="20" id="Yc8-X8-bYT"/>
+                            <constraint firstItem="OAG-TM-e2M" firstAttribute="top" secondItem="DtP-cV-1xr" secondAttribute="bottom" constant="20" id="if2-Za-blx"/>
+                            <constraint firstItem="1BW-Qa-sLu" firstAttribute="leading" secondItem="d5H-KM-DAQ" secondAttribute="leading" constant="16" id="ipK-Oy-hsA"/>
+                            <constraint firstItem="DtP-cV-1xr" firstAttribute="top" secondItem="1BW-Qa-sLu" secondAttribute="bottom" constant="19" id="obf-Yt-P1e"/>
+                            <constraint firstItem="OAG-TM-e2M" firstAttribute="leading" secondItem="d5H-KM-DAQ" secondAttribute="leading" constant="15" id="pgw-io-PAN"/>
+                            <constraint firstItem="d5H-KM-DAQ" firstAttribute="bottom" secondItem="1BW-Qa-sLu" secondAttribute="bottom" constant="759" id="rpu-T8-vbT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oh9-tg-Bph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="1440"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="1439.7321428571429"/>
         </scene>
     </scenes>
     <resources>
