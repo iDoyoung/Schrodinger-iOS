@@ -53,6 +53,16 @@ class SearchViewController: UIViewController{
     */
 
 }
+
+extension SearchViewController:SearchQueryModelProtocol{
+    func itemDownloaded(items: NSArray) {
+        feedItem = items
+        self.listTableView.reloadData()
+        print(3)
+    }
+    
+}
+
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -75,11 +85,4 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension SearchViewController:SearchQueryModelProtocol{
-    func itemDownloaded(items: NSArray) {
-        feedItem = items
-        self.listTableView.reloadData()
-        print(3)
-    }
-    
-}
+

@@ -55,7 +55,7 @@ class SearchQueryModel: NSObject {
             //String으로 바꾸는 것이 편해서 Default로 지정해놓음
             if let pno = jsonElement["pno"] as? Int,
                let name = jsonElement["name"] as? String,
-               let category = jsonElement["category"] as? Int,
+               let category = jsonElement["category"] as? String,
                let expirationDate = jsonElement["expirationDate"] as? String,
                let memo = jsonElement["memo"] as? String,
                let image = jsonElement["image"] as? String,

@@ -10,7 +10,7 @@ class DBSearchModel: NSObject {
     
     var pno : Int?
     var name : String?
-    var category : Int?
+    var category : String?
     var expirationDate : String?
     var memo : String?
     var image :String?
@@ -23,7 +23,7 @@ class DBSearchModel: NSObject {
         
     }
     
-    init(pno:Int,name:String,category:Int,expirationDate:String,memo:String,image:String,updateDate:String,deleteDate:String) {
+    init(pno:Int,name:String,category:String,expirationDate:String,memo:String,image:String,updateDate:String,deleteDate:String) {
         
         self.pno = pno
         self.name = name
