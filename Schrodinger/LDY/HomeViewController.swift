@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyLabel()
+        applyButton()
         expiredItemCollectionView.delegate = self
         expiredItemCollectionView.dataSource = self
         upcomingExpireCollectionView.delegate = self
@@ -42,6 +43,10 @@ class HomeViewController: UIViewController {
     @objc func showTodayExpiredList() {
         //TODO: Apply push today expired list
         
+        //Testing Method
+        let storyboard = UIStoryboard(name: "DyLee", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "WorldViewController")
+        present(destinationVC, animated: true, completion: nil)
     }
    
 }
@@ -49,7 +54,7 @@ class HomeViewController: UIViewController {
 //MARK: MOVE TO DETAIL
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 }
 
@@ -59,7 +64,11 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellOfHomeView", for: indexPath) as? CellOfHomeView else {
+            return UICollectionViewCell()
+        }
+        
+        return cell
     }
     
 }

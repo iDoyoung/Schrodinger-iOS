@@ -28,12 +28,12 @@ extension CalendarViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "") as? CellOfWorldRanking else {
             return UITableViewCell()
         }
-        
         return cell
     }
     
 }
 
 class CellOfCalendar: UITableViewCell {
+    
     
 }
