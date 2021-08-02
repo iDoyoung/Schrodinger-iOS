@@ -1,13 +1,13 @@
 //
-//  ListMainViewController.swift
+//  ListDetailCosmeticsViewController.swift
 //  Schrodinger
 //
-//  Created by ido on 2021/07/29.
+//  Created by MacAir on 2021/08/02.
 //
 
 import UIKit
 
-class ListMainViewController: UIViewController {
+class ListDetailCosmeticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,9 +15,7 @@ class ListMainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
 
-    
     /*
     // MARK: - Navigation
 

@@ -27,6 +27,9 @@
 		508839DA26B26430007734D4 /* JyChoi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839D926B26430007734D4 /* JyChoi.storyboard */; };
 		508839DD26B2643D007734D4 /* HjLim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DC26B2643D007734D4 /* HjLim.storyboard */; };
 		508839E026B26449007734D4 /* DyLee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DF26B26449007734D4 /* DyLee.storyboard */; };
+		A6E91A2626B7C4C90049C61C /* ListDetailFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */; };
+		A6E91A2826B7C5470049C61C /* ListDetailCosmeticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */; };
+		A6E91A2A26B7C5820049C61C /* ListDetailMedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		508839D926B26430007734D4 /* JyChoi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JyChoi.storyboard; sourceTree = "<group>"; };
 		508839DC26B2643D007734D4 /* HjLim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HjLim.storyboard; sourceTree = "<group>"; };
 		508839DF26B26449007734D4 /* DyLee.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DyLee.storyboard; sourceTree = "<group>"; };
+		A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailFoodViewController.swift; sourceTree = "<group>"; };
+		A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailCosmeticsViewController.swift; sourceTree = "<group>"; };
+		A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailMedicineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				508839BC26B24BC4007734D4 /* ListMainViewController.swift */,
+				A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */,
+				A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */,
+				A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */,
 			);
 			path = CJY;
 			sourceTree = "<group>";
@@ -241,13 +250,16 @@
 				5088399626B24282007734D4 /* ViewController.swift in Sources */,
 				5088399226B24282007734D4 /* AppDelegate.swift in Sources */,
 				508839BA26B24BA9007734D4 /* DetailItemViewController.swift in Sources */,
+				A6E91A2626B7C4C90049C61C /* ListDetailFoodViewController.swift in Sources */,
 				508839C426B24C1B007734D4 /* SearchViewController.swift in Sources */,
 				508839A726B2433D007734D4 /* String+Localized.swift in Sources */,
 				508839CE26B250A3007734D4 /* HomeViewController.swift in Sources */,
 				508839C026B24BEC007734D4 /* AddItemViewController.swift in Sources */,
 				508839B726B24B83007734D4 /* SignInViewController.swift in Sources */,
 				508839BD26B24BC4007734D4 /* ListMainViewController.swift in Sources */,
+				A6E91A2826B7C5470049C61C /* ListDetailCosmeticsViewController.swift in Sources */,
 				5088399426B24282007734D4 /* SceneDelegate.swift in Sources */,
+				A6E91A2A26B7C5820049C61C /* ListDetailMedicineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
