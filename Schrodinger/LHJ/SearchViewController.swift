@@ -20,6 +20,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! SearchTableViewCell
         let item:DBSearchModel = feedItem[indexPath.row] as! DBSearchModel
         print(4)
+        
         cell.NameTitle?.text = "식품명 : \(item.name!)"
         cell.Date?.text = "유통기간 : \(item.expirationDate!)"
         print("유통기간 : \(item.expirationDate!)")
@@ -53,15 +54,19 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func SegmentControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-  
+            let queryModel = SearchQueryModel()
+            queryModel.delegate = self
+            queryModel.downloadItems(name: SearchBar.text!)
             print(2)
         }else if sender.selectedSegmentIndex == 1 {
-           
+            let queryModel = SearchQueryModel()
+            queryModel.delegate = self
+            queryModel.downloadItems(name: SearchBar.text!)
             print(2)
         }else if sender.selectedSegmentIndex == 2 {
             let queryModel = SearchQueryModel()
             queryModel.delegate = self
-            queryModel.downloadItems()
+            queryModel.downloadItems(name: SearchBar.text!)
             print(2)
         }
     }
