@@ -29,6 +29,7 @@
 		508839DA26B26430007734D4 /* JyChoi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839D926B26430007734D4 /* JyChoi.storyboard */; };
 		508839DD26B2643D007734D4 /* HjLim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DC26B2643D007734D4 /* HjLim.storyboard */; };
 		508839E026B26449007734D4 /* DyLee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DF26B26449007734D4 /* DyLee.storyboard */; };
+		50F7BE9F26B78621004F4171 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BE9E26B78621004F4171 /* PieChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		508839D926B26430007734D4 /* JyChoi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JyChoi.storyboard; sourceTree = "<group>"; };
 		508839DC26B2643D007734D4 /* HjLim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HjLim.storyboard; sourceTree = "<group>"; };
 		508839DF26B26449007734D4 /* DyLee.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DyLee.storyboard; sourceTree = "<group>"; };
+		50F7BE9E26B78621004F4171 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				508839CD26B250A3007734D4 /* HomeViewController.swift */,
 				5044717F26B3D37900291B86 /* CalendarViewController.swift */,
 				5044718226B3D3BF00291B86 /* WorldViewController.swift */,
+				50F7BE9E26B78621004F4171 /* PieChart.swift */,
 			);
 			path = LDY;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F7BE9F26B78621004F4171 /* PieChart.swift in Sources */,
 				5088399626B24282007734D4 /* ViewController.swift in Sources */,
 				5088399226B24282007734D4 /* AppDelegate.swift in Sources */,
 				508839BA26B24BA9007734D4 /* DetailItemViewController.swift in Sources */,

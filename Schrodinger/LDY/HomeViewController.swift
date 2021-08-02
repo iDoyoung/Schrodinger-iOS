@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var checkTodayButton: UIButton!
     @IBOutlet weak var expiredItemCollectionView: UICollectionView!
     @IBOutlet weak var upcomingExpireCollectionView: UICollectionView!
+    @IBOutlet weak var chartView: UIView!
     
     func applyLabel() {
         firstSectionTitle.text = "Today expired item..".localized
@@ -26,6 +27,7 @@ class HomeViewController: UIViewController {
     
     func applyButton() {
         checkTodayButton.setTitle("Check".localized, for: .normal)
+        checkTodayButton.layer.cornerRadius = 10
         checkTodayButton.addTarget(self, action: #selector(showTodayExpiredList), for: .touchUpInside)
     }
     
@@ -37,9 +39,21 @@ class HomeViewController: UIViewController {
         expiredItemCollectionView.dataSource = self
         upcomingExpireCollectionView.delegate = self
         upcomingExpireCollectionView.dataSource = self
-       
+        chartView.backgroundColor = .secondarySystemBackground
+        let pieView = PieChart(frame: CGRect(
+                                x: self.chartView.bounds.minX,
+                                y: self.chartView.bounds.minY,
+                                width: self.view.frame.width - 40,
+                                height: self.view.frame.width - 40))
+        pieView.backgroundColor = .systemBackground
+        chartView.addSubview(pieView)
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        //MARK: Todo redraw pie chart
+    }
     @objc func showTodayExpiredList() {
         //TODO: Apply push today expired list
         
