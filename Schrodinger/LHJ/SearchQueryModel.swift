@@ -60,9 +60,10 @@ class SearchQueryModel: NSObject {
                let memo = jsonElement["memo"] as? String,
                let image = jsonElement["image"] as? String,
                let updateDate = jsonElement["updateDate"] as? String,
-               let deleteDate = jsonElement["deleteDate"] as? String{
+               let deleteDate = jsonElement["deleteDate"] as? String,
+               let pitems = jsonElement["pitems"] as? String{
                 
-                let query = DBSearchModel(pno: pno, name: name, category: category, expirationDate: expirationDate, memo: memo, image: image, updateDate: updateDate, deleteDate: deleteDate)
+                let query = DBSearchModel(pno: pno, name: name, category: category, expirationDate: expirationDate, memo: memo, image: image, updateDate: updateDate, deleteDate: deleteDate,pitems: pitems)
                 locations.add(query)
                 print(query)
             }

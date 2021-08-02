@@ -16,14 +16,14 @@ class DBSearchModel: NSObject {
     var image :String?
     var updateDate : String?
     var deleteDate: String?
-    
+    var pitems : String?
     
     //Empty constructor
     override init() {
         
     }
     
-    init(pno:Int,name:String,category:String,expirationDate:String,memo:String,image:String,updateDate:String,deleteDate:String) {
+    init(pno:Int,name:String,category:String,expirationDate:String,memo:String,image:String,updateDate:String,deleteDate:String,pitems:String) {
         
         self.pno = pno
         self.name = name
@@ -33,6 +33,7 @@ class DBSearchModel: NSObject {
         self.image = image
         self.updateDate = updateDate
         self.deleteDate = deleteDate
+        self.pitems = pitems
         print(14)
         
     }
