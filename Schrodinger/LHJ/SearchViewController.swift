@@ -54,19 +54,19 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func SegmentControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            let queryModel = SearchQueryModel()
+            let queryModel = UseQueryModel()
             queryModel.delegate = self
-            queryModel.downloadItems(name: SearchBar.text!)
+            queryModel.downloadItemed(name:SearchBar.text!)
             print(2)
         }else if sender.selectedSegmentIndex == 1 {
-            let queryModel = SearchQueryModel()
+            let queryModel = SubmitQueryModel()
             queryModel.delegate = self
-            queryModel.downloadItems(name: SearchBar.text!)
+            queryModel.downloadItem(name:SearchBar.text!)
             print(2)
         }else if sender.selectedSegmentIndex == 2 {
             let queryModel = SearchQueryModel()
             queryModel.delegate = self
-            queryModel.downloadItems(name: SearchBar.text!)
+            queryModel.downloadItems(name:SearchBar.text!)
             print(2)
         }
     }
@@ -82,9 +82,24 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     */
 
 }
+extension SearchViewController:UseQueryModelProtocol{
+    func itemDownload(items: NSArray) {
+        feedItem = items
+        self.listTableView.reloadData()
+        print(3)
+    }
+}
 
 extension SearchViewController:SearchQueryModelProtocol{
     func itemDownloaded(items: NSArray) {
+        feedItem = items
+        self.listTableView.reloadData()
+        print(3)
+    }
+}
+
+extension SearchViewController:SubmitQueryModelProtocol{
+    func itemDownloads(items: NSArray) {
         feedItem = items
         self.listTableView.reloadData()
         print(3)

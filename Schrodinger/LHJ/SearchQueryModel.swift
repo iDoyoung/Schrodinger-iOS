@@ -7,7 +7,7 @@
 
 import Foundation
 protocol SearchQueryModelProtocol{
-    func itemDownloaded(items:NSArray)
+    func itemDownload(items:NSArray)
 }
 
 class SearchQueryModel: NSObject {
@@ -78,7 +78,7 @@ class SearchQueryModel: NSObject {
             }
             //TableViewController에서 다른 일을 하고 있으면 여기서 async를 이용하여 table이 실행 될 때 같이 실행되도록 한다.
             DispatchQueue.main.async(execute: {() -> Void in
-                self.delegate.itemDownloaded(items: locations)
+                self.delegate.itemDownload(items: locations)
                 print(18)
             })
         }
