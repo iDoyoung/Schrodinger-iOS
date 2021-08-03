@@ -37,22 +37,6 @@ class ListDetailFoodViewController: UIViewController{
     
 
     
-//    // MARK: - MySQL - 정보읽기 (Prepare)
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "sgFood"{
-//            let cell = sender as! UITableViewCell    // 변형
-//            let indexPath = self.listTableView.indexPath(for: cell)
-//
-//            let aModel = feedFoodItem[indexPath!.row] as! DBModel
-//            let name = aModel.name
-//            let expirationDate = aModel.expirationDate
-//            let image = aModel.image
-//
-//            let detailView = segue.destination as! DetailViewController     // DetailViewController에 넘겨 받을 놈 즉, 함수 만들어주기
-//            detailView.receiveItems(String(code!), String(name!), String(dept!), String(phone!))
-//        }
-//    }
-    
 
     /*
     // MARK: - Navigation
@@ -118,6 +102,38 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
 
         return cell
     }
+    
+    // MARK: Table 셀 삭제(스와이프)
+
+    // MARK: 1. DB 데이터 지우고(DeleteModel) 2. 화면 지우기(셀 수행)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Delete")
+
+            let item = feedFoodItem[indexPath.row] as! DBModel
+
+            let deleteModel = FoodDeleteModel()
+            _ = deleteModel.deleteItems(pno: item.pno!) // 사용하지 않지 않는 변수는 _(언더바)로 사용
+
+            // *** 아래 2줄의 순서 중요함! ***
+            feedFoodItem.removeObject(at: indexPath.row) // 데이터 지우기
+            tableView.deleteRows(at: [indexPath], with: .fade) // 테이블 지우기
+
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+
+    // 삭제시 Delete를 삭제로 보이기
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
+    }
+    
+    
+    
+    
+    
+    
 
     
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 class DBModel: NSObject{
+    var pno: Int?
     var name: String?
     var expirationDate: String?
     var image: String?
@@ -20,7 +21,8 @@ class DBModel: NSObject{
     }
     
     // 생성자 만듦
-    init(name: String, expirationDate: String, image: String) {
+    init(pno: Int, name: String, expirationDate: String, image: String) {
+        self.pno = pno
         self.name = name
         self.expirationDate = expirationDate
         self.image = image

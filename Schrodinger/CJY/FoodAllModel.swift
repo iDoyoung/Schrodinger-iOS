@@ -50,12 +50,13 @@ class FoodAllModel{
         for i in 0..<jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
             
-            if let name = jsonElement["name"] as? String, // if let은 여러 개 쓸 수 있다.
+            if let pno = jsonElement["pno"] as? String, // JSON은 무조건 String, 따라서, jsp에서 Int가 "" 감싸져 있다면 int라도 String으로
+               let name = jsonElement["name"] as? String,
                let expirationDate = jsonElement["expirationDate"] as? String,
                let image = jsonElement["image"] as? String{
-                let query = DBModel(name: name, expirationDate: expirationDate, image: image)
+                let query = DBModel(pno: Int(pno)!, name: name, expirationDate: expirationDate, image: image)
                 locations.add(query)
-                print(name, expirationDate, image)
+                print(pno, name, expirationDate, image)
             }
         }
         // async 방식은 Dispatch가 사용된다.
