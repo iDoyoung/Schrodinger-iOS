@@ -28,7 +28,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         return cell
     }
     
-    
 
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var SegmentControl: UISegmentedControl!
@@ -84,14 +83,14 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 }
 extension SearchViewController:UseQueryModelProtocol{
     func itemDownload(items: NSArray) {
-        feedItem = items
+        feedItem = items as! NSMutableArray
         self.listTableView.reloadData()
         print(3)
     }
 }
 
 extension SearchViewController:SearchQueryModelProtocol{
-    func itemDownloaded(items: NSArray) {
+    func itemDownloaded(items: NSMutableArray) {
         feedItem = items
         self.listTableView.reloadData()
         print(3)
@@ -100,7 +99,7 @@ extension SearchViewController:SearchQueryModelProtocol{
 
 extension SearchViewController:SubmitQueryModelProtocol{
     func itemDownloads(items: NSArray) {
-        feedItem = items
+        feedItem = items as! NSMutableArray
         self.listTableView.reloadData()
         print(3)
     }

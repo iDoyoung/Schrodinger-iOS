@@ -30,7 +30,5 @@ class DBSearchModel: NSObject {
         self.updateDate = updateDate
         self.deleteDate = deleteDate
         
-        print(20)
-        
     }
 }
