@@ -17,12 +17,12 @@ class PieChart: UIView {
     var pieCenter = CGPoint.zero
     
     let pieColors = [UIColor.systemGreen, UIColor.systemPink]
-    var status = 0
     
     override func draw(_ rect: CGRect) {
         self.pieCenter = CGPoint(x: rect.midX, y: rect.midY)
         let total = self.values.reduce(0, +)
         let radius = min(rect.width, rect.width) / 2
+        var status = 0
         
         values.forEach { value in
             end = (CGFloat(value) / CGFloat(total)) * (.pi * 2)

@@ -18,6 +18,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var upcomingExpireCollectionView: UICollectionView!
     @IBOutlet weak var chartView: UIView!
     
+    var expiredItem = [Item]()
+    var upcomingExpire = [Item]()
+    
     func applyLabel() {
         firstSectionTitle.text = "Today expired item..".localized
         secondSectionTitle.text = "Expired item".localized
@@ -52,6 +55,17 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+//        APIService().performRequest { item in
+//            DispatchQueue.main.sync {
+//                self.expiredItem = item.filter{ $0.delete == ""}.filter{ $0.date == "2021-08-12"}
+//                self.expiredItemCollectionView.reloadData()
+//                
+//                self.upcomingExpire = item.filter{ $0.delete == ""}
+//                self.upcomingExpireCollectionView.reloadData()
+//                
+//            }
+//        }
         //MARK: Todo redraw pie chart
     }
     @objc func showTodayExpiredList() {

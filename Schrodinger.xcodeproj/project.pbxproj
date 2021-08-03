@@ -30,6 +30,8 @@
 		508839DD26B2643D007734D4 /* HjLim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DC26B2643D007734D4 /* HjLim.storyboard */; };
 		508839E026B26449007734D4 /* DyLee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DF26B26449007734D4 /* DyLee.storyboard */; };
 		50F7BE9F26B78621004F4171 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BE9E26B78621004F4171 /* PieChart.swift */; };
+		50F7BEA126B7C496004F4171 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BEA026B7C496004F4171 /* APIService.swift */; };
+		50F7BEA326B7C4C8004F4171 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BEA226B7C4C8004F4171 /* ItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		508839DC26B2643D007734D4 /* HjLim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HjLim.storyboard; sourceTree = "<group>"; };
 		508839DF26B26449007734D4 /* DyLee.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DyLee.storyboard; sourceTree = "<group>"; };
 		50F7BE9E26B78621004F4171 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		50F7BEA026B7C496004F4171 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		50F7BEA226B7C4C8004F4171 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 				5044717F26B3D37900291B86 /* CalendarViewController.swift */,
 				5044718226B3D3BF00291B86 /* WorldViewController.swift */,
 				50F7BE9E26B78621004F4171 /* PieChart.swift */,
+				50F7BEA026B7C496004F4171 /* APIService.swift */,
+				50F7BEA226B7C4C8004F4171 /* ItemModel.swift */,
 			);
 			path = LDY;
 			sourceTree = "<group>";
@@ -247,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F7BEA326B7C4C8004F4171 /* ItemModel.swift in Sources */,
 				50F7BE9F26B78621004F4171 /* PieChart.swift in Sources */,
 				5088399626B24282007734D4 /* ViewController.swift in Sources */,
 				5088399226B24282007734D4 /* AppDelegate.swift in Sources */,
@@ -255,6 +262,7 @@
 				5044718026B3D37900291B86 /* CalendarViewController.swift in Sources */,
 				508839C426B24C1B007734D4 /* SearchViewController.swift in Sources */,
 				508839A726B2433D007734D4 /* String+Localized.swift in Sources */,
+				50F7BEA126B7C496004F4171 /* APIService.swift in Sources */,
 				508839CE26B250A3007734D4 /* HomeViewController.swift in Sources */,
 				508839C026B24BEC007734D4 /* AddItemViewController.swift in Sources */,
 				508839B726B24B83007734D4 /* SignInViewController.swift in Sources */,
