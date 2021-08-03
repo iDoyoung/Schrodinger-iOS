@@ -109,16 +109,30 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print("Delete")
+            
+        //    "\(item.name!)을 삭제하시겠습니까?"
+            let temp = feedFoodItem[indexPath.row] as! DBModel
 
-            let item = feedFoodItem[indexPath.row] as! DBModel
+            let foodDeleteAlert = UIAlertController(title: "삭제", message: "\(String(describing: temp.name!))을 삭제하시겠습니까?", preferredStyle: .alert)
+            let onAction = UIAlertAction(title: "네", style: .destructive, handler: { [self]ACTION in
 
-            let deleteModel = FoodDeleteModel()
-            _ = deleteModel.deleteItems(pno: item.pno!) // 사용하지 않지 않는 변수는 _(언더바)로 사용
+                let item = feedFoodItem[indexPath.row] as! DBModel
 
-            // *** 아래 2줄의 순서 중요함! ***
-            feedFoodItem.removeObject(at: indexPath.row) // 데이터 지우기
-            tableView.deleteRows(at: [indexPath], with: .fade) // 테이블 지우기
+                let deleteModel = FoodDeleteModel()
+                _ = deleteModel.deleteItems(pno: item.pno!) // 사용하지 않지 않는 변수는 _(언더바)로 사용
 
+                // *** 아래 2줄의 순서 중요함! ***
+                feedFoodItem.removeObject(at: indexPath.row) // 데이터 지우기
+                tableView.deleteRows(at: [indexPath], with: .fade) // 테이블 지우기
+
+            })
+            
+            let offAction = UIAlertAction(title: "아니오", style: .default, handler: nil)
+            
+            foodDeleteAlert.addAction(onAction)
+            foodDeleteAlert.addAction(offAction)
+            present(foodDeleteAlert, animated: true, completion: nil)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
