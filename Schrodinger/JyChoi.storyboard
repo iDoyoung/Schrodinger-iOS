@@ -69,6 +69,9 @@
                                     <segment title="Imminent"/>
                                     <segment title="Expired"/>
                                 </segments>
+                                <connections>
+                                    <action selector="expClassify:" destination="vly-vZ-YOL" eventType="valueChanged" id="Nsk-Iy-HF3"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UJv-Ir-nNm">
                                 <rect key="frame" x="45" y="168" width="324" height="630"/>
@@ -120,6 +123,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FHb-OC-Cm1"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="expClassify" destination="Fih-zB-U73" id="Ycl-Fw-7BR"/>
                         <outlet property="listTableView" destination="UJv-Ir-nNm" id="Avp-ZS-em8"/>
                     </connections>
                 </viewController>

@@ -7,8 +7,10 @@
 
 import Foundation
 
+var share = ShareCJY()
+
 class FoodDeleteModel{
-    var urlPath = "http://192.168.2.102:8080/schrodinger/food_delete_schrodinger.jsp"
+    var urlPath = share.url("food_delete_schrodinger.jsp")
     
     
     // 함수 이름 바꿈 -> 괄호 안에 데이터 넣어줌(code: String, name: String, dept: String, phone: String)

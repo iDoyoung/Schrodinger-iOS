@@ -31,6 +31,7 @@
 		905B652526B8F667005BAE31 /* FoodAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652426B8F667005BAE31 /* FoodAllModel.swift */; };
 		905B652726B9087C005BAE31 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652626B9087C005BAE31 /* TableViewCell.swift */; };
 		905B652926B92E02005BAE31 /* FoodDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652826B92E02005BAE31 /* FoodDeleteModel.swift */; };
+		905B652B26B94C63005BAE31 /* ShareCJY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652A26B94C63005BAE31 /* ShareCJY.swift */; };
 		A6E91A2626B7C4C90049C61C /* ListDetailFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */; };
 		A6E91A2826B7C5470049C61C /* ListDetailCosmeticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */; };
 		A6E91A2A26B7C5820049C61C /* ListDetailMedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */; };
@@ -66,6 +67,7 @@
 		905B652426B8F667005BAE31 /* FoodAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAllModel.swift; sourceTree = "<group>"; };
 		905B652626B9087C005BAE31 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		905B652826B92E02005BAE31 /* FoodDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDeleteModel.swift; sourceTree = "<group>"; };
+		905B652A26B94C63005BAE31 /* ShareCJY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCJY.swift; sourceTree = "<group>"; };
 		A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailFoodViewController.swift; sourceTree = "<group>"; };
 		A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailCosmeticsViewController.swift; sourceTree = "<group>"; };
 		A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailMedicineViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				905B652226B8F457005BAE31 /* DBModel_CJY.swift */,
 				905B652426B8F667005BAE31 /* FoodAllModel.swift */,
 				905B652826B92E02005BAE31 /* FoodDeleteModel.swift */,
+				905B652A26B94C63005BAE31 /* ShareCJY.swift */,
 			);
 			path = CJY;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				905B652726B9087C005BAE31 /* TableViewCell.swift in Sources */,
 				5088399226B24282007734D4 /* AppDelegate.swift in Sources */,
 				508839BA26B24BA9007734D4 /* DetailItemViewController.swift in Sources */,
+				905B652B26B94C63005BAE31 /* ShareCJY.swift in Sources */,
 				905B652526B8F667005BAE31 /* FoodAllModel.swift in Sources */,
 				A6E91A2626B7C4C90049C61C /* ListDetailFoodViewController.swift in Sources */,
 				905B652326B8F457005BAE31 /* DBModel_CJY.swift in Sources */,
