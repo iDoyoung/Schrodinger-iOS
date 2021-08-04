@@ -12,7 +12,7 @@ protocol SubmitQueryModelProtocol{
 
 class SubmitQueryModel: NSObject {
     var delegate: SubmitQueryModelProtocol!
-    var urlPath = "http://192.168.2.101:8080/ios/submit_product_query_ios.jsp"
+    var urlPath = "http://192.168.2.54:8080/ios/submit_product_query_ios.jsp"
         
     func downloadItem(name:String) -> Bool{
             var result: Bool = true

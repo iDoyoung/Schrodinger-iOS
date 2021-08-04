@@ -21,7 +21,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let item:DBSearchModel = feedItem[indexPath.row] as! DBSearchModel
         print(4)
         
-        cell.NameTitle?.text = "식품명 : \(item.name!)"
+        cell.NameTitle?.text = "물품명 : \(item.name!)"
         cell.Date?.text = "유통기간 : \(item.expirationDate!)"
         print("유통기간 : \(item.expirationDate!)")
         print(5)
@@ -53,14 +53,14 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func SegmentControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            let queryModel = UseQueryModel()
-            queryModel.delegate = self
-            queryModel.downloadItemed(name:SearchBar.text!)
-            print(2)
-        }else if sender.selectedSegmentIndex == 1 {
             let queryModel = SubmitQueryModel()
             queryModel.delegate = self
             queryModel.downloadItem(name:SearchBar.text!)
+            print(2)
+        }else if sender.selectedSegmentIndex == 1 {
+            let queryModel = UseQueryModel()
+            queryModel.delegate = self
+            queryModel.downloadItemed(name:SearchBar.text!)
             print(2)
         }else if sender.selectedSegmentIndex == 2 {
             let queryModel = SearchQueryModel()
@@ -82,7 +82,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 
 }
 extension SearchViewController:UseQueryModelProtocol{
-    func itemDownload(items: NSArray) {
+    func itemDownloaded(items: NSArray) {
         feedItem = items as! NSMutableArray
         self.listTableView.reloadData()
         print(3)
@@ -90,7 +90,7 @@ extension SearchViewController:UseQueryModelProtocol{
 }
 
 extension SearchViewController:SearchQueryModelProtocol{
-    func itemDownloaded(items: NSMutableArray) {
+    func itemDownload(items: NSArray) {
         feedItem = items
         self.listTableView.reloadData()
         print(3)

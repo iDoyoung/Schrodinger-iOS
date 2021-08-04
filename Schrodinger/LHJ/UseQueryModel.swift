@@ -7,12 +7,12 @@
 
 import Foundation
 protocol UseQueryModelProtocol{
-    func itemDownload(items:NSArray)
+    func itemDownloaded(items:NSArray)
 }
 
 class UseQueryModel: NSObject {
         var delegate: UseQueryModelProtocol!
-        var urlPath = "http://192.168.2.101:8080/ios/use_product_query_ios.jsp"
+        var urlPath = "http://192.168.2.54:8080/ios/use_product_query_ios.jsp"
         
     func downloadItemed(name:String) -> Bool{
             var result: Bool = true
@@ -78,7 +78,7 @@ class UseQueryModel: NSObject {
             }
             //TableViewController에서 다른 일을 하고 있으면 여기서 async를 이용하여 table이 실행 될 때 같이 실행되도록 한다.
             DispatchQueue.main.async(execute: {() -> Void in
-                self.delegate.itemDownload(items: locations)
+                self.delegate.itemDownloaded(items: locations)
                 print(18)
             })
         }
