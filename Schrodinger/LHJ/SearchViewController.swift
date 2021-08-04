@@ -90,8 +90,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     */
   
-    
-
 }
 extension SearchViewController:UseQueryModelProtocol{
     func itemDownloaded(items: NSArray) {
