@@ -72,7 +72,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
     
-    /*
+    
     // MARK: - Navigation
      //지금 합쳐지지 않아서 막아놓음 --> 테이블 셀 중 하나를 누르면 디테일 뷰로 해당 셀의 정보를 부르게 하기!!!!
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -88,7 +88,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
      print(8)
      }
     }
-    */
   
     
 
