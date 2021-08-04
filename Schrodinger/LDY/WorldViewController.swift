@@ -14,12 +14,10 @@ class WorldViewController: UIViewController {
     @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var cosmeticsButton: UIButton!
     @IBOutlet weak var medicineButton: UIButton!
+    @IBOutlet weak var totalOfWorldThrowOut: UILabel!
     
-    var allItems = [ThrowOutItem]()
-    var foodAndBeverageItems = [ThrowOutItem]()
-    var cosmeticsItems = [ThrowOutItem]()
-    var medicineItems = [ThrowOutItem]()
-    
+    var items = [ThrowOutItem]()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         allButton.isSelected = true
@@ -34,6 +32,11 @@ class WorldViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadAll()
+        APIService().performAllItemRequest { items in
+            DispatchQueue.main.async {
+                self.totalOfWorldThrowOut.text = " \(items.map{ Int($0.totalOfThrowOut)! }.reduce(0){ $0 + $1 })"
+            }
+        }
     }
     
     func updateButtonUI(_ button: UIButton) {
@@ -54,21 +57,25 @@ class WorldViewController: UIViewController {
             cosmeticsButton.isSelected = false
             medicineButton.isSelected = false
             button.isSelected = true
+            loadAll()
         case foodButton:
             allButton.isSelected = false
             cosmeticsButton.isSelected = false
             medicineButton.isSelected = false
             button.isSelected = true
+            loadFoodAndBeverage()
         case cosmeticsButton:
             allButton.isSelected = false
             foodButton.isSelected = false
             medicineButton.isSelected = false
             button.isSelected = true
+            loadCosmetics()
         case medicineButton:
             allButton.isSelected = false
             foodButton.isSelected = false
             cosmeticsButton.isSelected = false
             button.isSelected = true
+            loadMedicine()
             
         default:
             return
@@ -83,38 +90,54 @@ class WorldViewController: UIViewController {
     func loadAll() {
         APIService().performAllItemRequest { items in
             DispatchQueue.main.async {
-                self.allItems = items
+                self.items = items
+                print(self.items[0].category)
                 self.tableView.reloadData()
             }
         }
     }
     
-//    func loadFoodAndBeverage() {
-//
-//    }
-//
-//    func loadCosmetics() {
-//
-//    }
-//
-//    func loadMedicine() {
-//
-//    }
+    func loadFoodAndBeverage() {
+        APIService().performAllItemRequest { items in
+            DispatchQueue.main.async {
+                self.items = items.filter{ $0.category == "0"}
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func loadCosmetics() {
+        APIService().performAllItemRequest { items in
+            DispatchQueue.main.async {
+                self.items = items.filter{ $0.category == "1"}
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func loadMedicine() {
+        APIService().performAllItemRequest { items in
+            DispatchQueue.main.async {
+                self.items = items.filter{ $0.category == "2"}
+                self.tableView.reloadData()
+            }
+        }
+    }
 
 }
 
 extension WorldViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allItems.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellOfWorld") as? CellOfWorldRanking else {
             return UITableViewCell()
         }
-        cell.itemName.text = allItems[indexPath.row].name
-        cell.totalOfThrowOut.text = allItems[indexPath.row].totalOfThrowOut
+        cell.itemName.text = items[indexPath.row].name
+        cell.totalOfThrowOut.text = items[indexPath.row].totalOfThrowOut
         return cell
     }
     

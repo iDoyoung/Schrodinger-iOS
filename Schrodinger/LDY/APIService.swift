@@ -9,7 +9,7 @@ import Foundation
 
 class APIService {
     
-    let tomcatUserItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_mysql_db.jsp"
+    let tomcatUserItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_mysql_db.jsp?"
     let tomcatAllItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_all_items_mysql_db.jsp"
     
     func performUserItemRequest(completion: @escaping ([Item]) -> Void) {
@@ -17,12 +17,11 @@ class APIService {
         let session = URLSession(configuration: .default)
         var urlComponents = URLComponents(string: tomcatUserItemURL)!
         
-        let requestURL = urlComponents.url!
-        
         let idQuery = URLQueryItem(name: "id", value: "1")
         
         urlComponents.queryItems?.append(idQuery)
-        
+        let requestURL = urlComponents.url!
+        print(requestURL)
         session.dataTask(with: requestURL) { data, response, error in
             guard error == nil else {
                 return
@@ -35,6 +34,7 @@ class APIService {
             }
             let items = APIService.parseItemJSON(resultData)
             completion(items)
+            print(items.count)
         }.resume()
         
     }
@@ -83,4 +83,5 @@ class APIService {
             return []
         }
     }
+    
 }

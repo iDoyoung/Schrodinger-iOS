@@ -332,7 +332,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5Q-TU-6cW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="World of thorw away.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5Q-TU-6cW">
                                 <rect key="frame" x="20" y="61" width="350" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -432,6 +432,7 @@
                         <outlet property="foodButton" destination="0mR-oI-oHt" id="Jsa-T9-Ok3"/>
                         <outlet property="medicineButton" destination="kyo-OA-LWf" id="FEp-ES-5jr"/>
                         <outlet property="tableView" destination="p0U-Dv-l5r" id="RhL-Pe-s7J"/>
+                        <outlet property="totalOfWorldThrowOut" destination="E2x-9p-8Bg" id="V9N-5o-3ot"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OU-n7-o8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

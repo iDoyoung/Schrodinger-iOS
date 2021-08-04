@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var upcomingExpireCollectionView: UICollectionView!
     @IBOutlet weak var chartView: UIView!
     
+    var todayExpired = [Item]()
     var expiredItem = [Item]()
     var upcomingExpire = [Item]()
     
@@ -56,16 +57,18 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-//        APIService().performRequest { item in
-//            DispatchQueue.main.sync {
-//                self.expiredItem = item.filter{ $0.delete == ""}.filter{ $0.date == "2021-08-12"}
-//                self.expiredItemCollectionView.reloadData()
-//                
-//                self.upcomingExpire = item.filter{ $0.delete == ""}
-//                self.upcomingExpireCollectionView.reloadData()
-//                
-//            }
-//        }
+        APIService().performUserItemRequest { items in
+            DispatchQueue.main.sync {
+                self.todayExpired = items.filter{ $0.date == Date().toString() }
+                self.upcomingExpire = items.filter{ $0.date.toDate() <= Date().beforeOneWeek() && $0.date.toDate() > Date()}
+                self.expiredItem = items.filter{ $0.date.toDate() <= Date() }
+                //TODO: Apply image from JSP
+                print(self.todayExpired)
+                print(self.upcomingExpire)
+                print(self.expiredItem)
+                
+            }
+        }
         //MARK: Todo redraw pie chart
     }
     @objc func showTodayExpiredList() {
@@ -81,12 +84,14 @@ class HomeViewController: UIViewController {
 
 //MARK: MOVE TO DETAIL
 extension HomeViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }

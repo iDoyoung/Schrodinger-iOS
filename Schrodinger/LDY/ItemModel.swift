@@ -31,10 +31,12 @@ struct ThrowOutItem: Codable {
     
     let totalOfThrowOut: String
     let name: String
+    let category: String
     
     enum CodingKeys: String, CodingKey {
         case totalOfThrowOut = "tcount"
         case name = "name"
+        case category = "category"
     }
 }
 
