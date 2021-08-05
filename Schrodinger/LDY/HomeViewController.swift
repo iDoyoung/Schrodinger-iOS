@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var upcomingExpireCollectionView: UICollectionView!
     @IBOutlet weak var chartView: UIView!
     
-    var todayExpired = [Item]()
+    var todayExpired = [String]()
     var expiredItem = [Item]()
     var upcomingExpire = [Item]()
     
@@ -61,13 +61,13 @@ class HomeViewController: UIViewController {
         
         APIService().performUserItemRequest { items in
             DispatchQueue.global().async {
-                self.todayExpired = items.filter{ $0.date == Date().toString() }
+                self.todayExpired = items.filter{ $0.date == Date().toString() }.map { $0.name }
                 self.upcomingExpire = items.filter{ Date() >= $0.date.toDate().beforeOneWeek() && $0.date.toDate() > Date()}
                 self.expiredItem = items.filter{ $0.date.toDate() <= Date() }
                 DispatchQueue.main.sync {
                     self.expiredItemCollectionView.reloadData()
                     self.upcomingExpireCollectionView.reloadData()
-                    
+                    self.todayExpiredItem.text = self.todayExpired.joined(separator: " ")
                 }
             }
         }
