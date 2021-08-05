@@ -1,16 +1,16 @@
 //
-//  FoodDeleteModel.swift
+//  ProductDeleteModel.swift
 //  Schrodinger
 //
-//  Created by Jiyeon on 2021/08/03.
+//  Created by Jiyeon on 2021/08/05.
 //
 
 import Foundation
 
 var share = ShareCJY()
 
-class FoodDeleteModel{
-    var urlPath = share.url("food_delete_schrodinger.jsp")
+class ProductDeleteModel{
+    var urlPath = share.url("product_delete_schrodinger.jsp")
     
     
     // 함수 이름 바꿈 -> 괄호 안에 데이터 넣어줌(code: String, name: String, dept: String, phone: String)
@@ -18,9 +18,11 @@ class FoodDeleteModel{
     // MARK: *** 함수는 소문자! 클래스는 대문자! *** 얘는 이거 예민해서 틀리면 에러뜬다!!!!!
     func deleteItems(pno: Int) -> Bool{
         var result: Bool = true
-        let urlAdd = "?pno=\(pno)"
+        let urlAdd = "&pno=\(pno)"
+        print(pno)
         // ?는 urlPath 안에 있는 주소 맨 뒤에 달려서 나감, 띄어쓰기 안 돼!
         urlPath = urlPath + urlAdd
+        print(urlPath)
         
         // 한글 url encoding -> 한글이 퍼센트 글자로 쫙 바뀌어서 urlPath가 만들어진다.
         urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

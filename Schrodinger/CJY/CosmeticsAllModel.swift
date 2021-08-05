@@ -1,24 +1,24 @@
 //
-//  FoodAllModel.swift
+//  CosmeticsAllModel.swift
 //  Schrodinger
 //
-//  Created by Jiyeon on 2021/08/03.
+//  Created by Jiyeon on 2021/08/05.
 //
 
 import Foundation
 
-// MARK: protocol FoodAllModelProtocol
-protocol FoodAllModelProtocol{
+// MARK: protocol CosmeticsAllModelProtocol
+protocol CosmeticsAllModelProtocol{
     
     func itemDownloaded(items: NSMutableArray) // 배열 만드는 것 NSArray(NS = Next Step)
     
 }
 
 
-// MARK: FoodAllModel class
-class FoodAllModel{
-    var delegate: FoodAllModelProtocol!
-    var urlPath = share.url("food_all_schrodinger.jsp")
+// MARK: CosmeticsAllModel class
+class CosmeticsAllModel{
+    var delegate: CosmeticsAllModelProtocol!
+    var urlPath = share.url("cosmetics_all_schrodinger.jsp")
     
     func downloadItems(check: String) {
         urlPath = urlPath + "&check=\(check)"
@@ -32,12 +32,8 @@ class FoodAllModel{
             guard let data = data else {
                 return
             }
-            //if error != nil{
-                //print("Failed to download data")
-            //}else{
                 print("Data is download")
             self.parseJSON(data) // 데이터 받아서 파싱해주는 것
-            //}
             
         }
         task.resume()
@@ -73,7 +69,7 @@ class FoodAllModel{
             DispatchQueue.main.async(execute: {() -> Void in
                 self.delegate.itemDownloaded(items: locations)
             })
-        }       
+        }
 //        // async 방식은 Dispatch가 사용된다.
 //        DispatchQueue.main.async(execute: {() -> Void in
 //            self.delegate.itemDownloaded(items: locations)
@@ -81,5 +77,4 @@ class FoodAllModel{
         
     }
 }
-
 

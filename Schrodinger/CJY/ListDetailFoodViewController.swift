@@ -20,8 +20,6 @@ class ListDetailFoodViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         // Cell의 크기 지정
         listTableView.rowHeight = 95
     }
@@ -44,13 +42,18 @@ class ListDetailFoodViewController: UIViewController{
         foodAllModel.delegate = self
         
         if sender.selectedSegmentIndex == 0{
+            feedFoodItem.removeAllObjects()
+            listTableView.reloadData()            
             foodAllModel.downloadItems(check: "0")
         }else if sender.selectedSegmentIndex == 1{
+            feedFoodItem.removeAllObjects()
+            listTableView.reloadData()
             foodAllModel.downloadItems(check: "1")
         }else if sender.selectedSegmentIndex == 2{
+            feedFoodItem.removeAllObjects()
+            listTableView.reloadData()
             foodAllModel.downloadItems(check: "2")
         }
-        
     }
     
 } //------------ListDetailFoodViewController-------------
@@ -71,9 +74,8 @@ extension ListDetailFoodViewController: FoodAllModelProtocol{
         self.listTableView.reloadData()
     
     }
-    
-
 }
+
 
 // MARK: - extension : Table view data source
 extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelegate {
@@ -97,14 +99,11 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
         let item: DBModel = feedFoodItem[indexPath.row] as! DBModel
 
         // cell. 다음 tableViewCell 이름!
-        
         // cell - 이미지
+        let imgurl = share.imgUrl("\(item.image ?? "noImage.png")")
+    //    let imgurl = URL(string: "http://192.168.2.102:8080/schrodinger/images/\(item.image ?? "noImage.png")?id=1")
         
-       // let urlPath = share.url("food_all_schrodinger.jsp")
-       // let imgurl = share.imgUrl("\(item.image!)")
-        
-        let imgurl = URL(string: "http://172.30.1.40:8080/schrodinger/images/\(item.image ?? "noImage.png")?id=1")
-        let data = try? Data(contentsOf: imgurl!)
+        let data = try? Data(contentsOf: URL(string: imgurl)!)
         cell.imgFood.image = UIImage(data: data!)
         
         // cell - 이름/유통기한
@@ -114,6 +113,7 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
 
         return cell
     }
+    
     
     // MARK: Table 셀 삭제(스와이프)
 
@@ -130,7 +130,7 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
 
                 let item = feedFoodItem[indexPath.row] as! DBModel
 
-                let deleteModel = FoodDeleteModel()
+                let deleteModel = ProductDeleteModel()
                 _ = deleteModel.deleteItems(pno: item.pno!) // 사용하지 않지 않는 변수는 _(언더바)로 사용
 
                 // *** 아래 2줄의 순서 중요함! ***
@@ -154,6 +154,5 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "삭제"
     }
-    
   
 }
