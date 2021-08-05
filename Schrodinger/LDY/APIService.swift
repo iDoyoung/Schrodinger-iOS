@@ -9,8 +9,10 @@ import Foundation
 
 class APIService {
     
-    let tomcatUserItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_mysql_db.jsp?"
-    let tomcatAllItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_all_items_mysql_db.jsp"
+    let tomcatUserItemURL = "http://172.30.1.5:8080/schrodinger/schrodinger_mysql_db.jsp?"
+    let tomcatAllItemURL = "http://172.30.1.5:8080/schrodinger/schrodinger_all_items_mysql_db.jsp"
+    let imageURL = "http://172.30.1.5:8080/schrodinger/images/"
+    
     
     func performUserItemRequest(completion: @escaping ([Item]) -> Void) {
         

@@ -47,8 +47,4 @@ struct ResponseThorwOutItems: Codable {
 
 struct ResponseItems: Codable {
     let items: [Item]
-    
-//    enum CodingKeys: String, CodingKey {
-//        case items = "items"
-//    }
 }
