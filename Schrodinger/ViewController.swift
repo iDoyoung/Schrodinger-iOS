@@ -57,8 +57,9 @@ class ViewController: UIViewController {
     @objc func goSjp() {
         let storyboard = UIStoryboard(name: "JpSong", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailItemViewController") as! DetailItemViewController
-        destinationVC.modalPresentationStyle = .fullScreen
-        present(destinationVC, animated: true, completion: nil)
+        let destinationNAC = UINavigationController(rootViewController: destinationVC)
+        destinationNAC.modalPresentationStyle = .fullScreen
+        present(destinationNAC, animated: true, completion: nil)
     }
     
     @objc func goYhj() {
