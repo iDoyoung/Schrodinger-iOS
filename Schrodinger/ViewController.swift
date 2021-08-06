@@ -56,7 +56,7 @@ class ViewController: UIViewController {
 
     @objc func goSjp() {
         let storyboard = UIStoryboard(name: "JpSong", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailItemViewController") as! DetailItemViewController
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "TestViewController") as! TestViewController
         let destinationNAC = UINavigationController(rootViewController: destinationVC)
         destinationNAC.modalPresentationStyle = .fullScreen
         present(destinationNAC, animated: true, completion: nil)
@@ -86,9 +86,8 @@ class ViewController: UIViewController {
     @objc func goCjy() {
         let storyboard = UIStoryboard(name: "JyChoi", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "ListMainViewController") as! ListMainViewController
-        let destinationNAV = UINavigationController(rootViewController: destinationVC)
-        destinationNAV.modalPresentationStyle = .fullScreen
-        present(destinationNAV, animated: true, completion: nil)
+        destinationVC.modalPresentationStyle = .fullScreen
+        present(destinationVC, animated: true, completion: nil)
     }
 }
 
