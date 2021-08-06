@@ -21,7 +21,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var lblCosName: UILabel!
     @IBOutlet weak var lblCosExp: UILabel!
     
-    // MARK: 3. Medicine_Content View
+// MARK: 3. Medicine_Content View
     @IBOutlet weak var imgMedicine: UIImageView!
     @IBOutlet weak var lblMedsName: UILabel!
     @IBOutlet weak var lblMedsExp: UILabel!
