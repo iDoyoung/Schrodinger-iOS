@@ -27,6 +27,17 @@ struct Item: Codable {
     }
 }
 
+struct UseRatio: Codable {
+    
+    let throwOutCount: Int
+    let useCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case throwOutCount = "??"
+        case useCount = "???"
+    }
+}
+
 struct ThrowOutItem: Codable {
     
     let totalOfThrowOut: String
