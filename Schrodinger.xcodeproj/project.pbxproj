@@ -32,8 +32,6 @@
 		50F7BE9F26B78621004F4171 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BE9E26B78621004F4171 /* PieChart.swift */; };
 		50F7BEA126B7C496004F4171 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BEA026B7C496004F4171 /* APIService.swift */; };
 		50F7BEA326B7C4C8004F4171 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BEA226B7C4C8004F4171 /* ItemModel.swift */; };
-		7F0E7FBA26BA798C003D0A34 /* Date+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */; };
-		7F0E7FBC26BA7C72003D0A34 /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */; };
 		691F70ED26B930C700D1079B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F70EC26B930C700D1079B /* EditViewController.swift */; };
 		691F70EF26B952A700D1079B /* EditShelflifeUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F70EE26B952A700D1079B /* EditShelflifeUpdate.swift */; };
 		691F70F126B992E500D1079B /* UseAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F70F026B992E500D1079B /* UseAllModel.swift */; };
@@ -48,6 +46,9 @@
 		6995140A26BBA1E600F4BF8A /*  RegistrationdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995140926BBA1E600F4BF8A /*  RegistrationdateModel.swift */; };
 		6995140C26BBEC2900F4BF8A /* MemoUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995140B26BBEC2900F4BF8A /* MemoUpdateModel.swift */; };
 		69EF468C26B2B67400D8EA91 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF468B26B2B67400D8EA91 /* TestViewController.swift */; };
+		7F0E7FBA26BA798C003D0A34 /* Date+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */; };
+		7F0E7FBC26BA7C72003D0A34 /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */; };
+		7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,8 +82,6 @@
 		50F7BE9E26B78621004F4171 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		50F7BEA026B7C496004F4171 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		50F7BEA226B7C4C8004F4171 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ToString.swift"; sourceTree = "<group>"; };
-		7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
 		691F70EC26B930C700D1079B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		691F70EE26B952A700D1079B /* EditShelflifeUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShelflifeUpdate.swift; sourceTree = "<group>"; };
 		691F70F026B992E500D1079B /* UseAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseAllModel.swift; sourceTree = "<group>"; };
@@ -97,6 +96,9 @@
 		6995140926BBA1E600F4BF8A /*  RegistrationdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " RegistrationdateModel.swift"; sourceTree = "<group>"; };
 		6995140B26BBEC2900F4BF8A /* MemoUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoUpdateModel.swift; sourceTree = "<group>"; };
 		69EF468B26B2B67400D8EA91 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ToString.swift"; sourceTree = "<group>"; };
+		7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
+		7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckTodayViewController.swift; path = ../../../../iDOProject/Schrodinger/Schrodinger/LDY/CheckTodayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				508839CD26B250A3007734D4 /* HomeViewController.swift */,
 				5044717F26B3D37900291B86 /* CalendarViewController.swift */,
 				5044718226B3D3BF00291B86 /* WorldViewController.swift */,
+				7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */,
 				50F7BE9E26B78621004F4171 /* PieChart.swift */,
 				50F7BEA026B7C496004F4171 /* APIService.swift */,
 				50F7BEA226B7C4C8004F4171 /* ItemModel.swift */,
@@ -328,6 +331,7 @@
 				698C9C1C26B704C300EF5568 /* ShareIP.swift in Sources */,
 				6980865E26B78724000D997A /* MemoViewController.swift in Sources */,
 				691F70EF26B952A700D1079B /* EditShelflifeUpdate.swift in Sources */,
+				7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */,
 				6995140A26BBA1E600F4BF8A /*  RegistrationdateModel.swift in Sources */,
 				6995140C26BBEC2900F4BF8A /* MemoUpdateModel.swift in Sources */,
 				508839BD26B24BC4007734D4 /* ListMainViewController.swift in Sources */,

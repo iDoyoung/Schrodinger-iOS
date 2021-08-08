@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+//MARK: View
     @IBOutlet weak var firstSectionTitle: UILabel!
     @IBOutlet weak var todayExpiredItem: UILabel!
     @IBOutlet weak var secondSectionTitle: UILabel!
@@ -18,10 +19,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var expiredItemCollectionView: UICollectionView!
     @IBOutlet weak var upcomingExpireCollectionView: UICollectionView!
     @IBOutlet weak var chartView: UIView!
-    
-    var todayExpired = [String]()
-    var expiredItem = [Item]()
-    var upcomingExpire = [Item]()
     
     func applyLabel() {
         firstSectionTitle.text = "Today expired item..".localized
@@ -35,6 +32,10 @@ class HomeViewController: UIViewController {
         checkTodayButton.layer.cornerRadius = 10
         checkTodayButton.addTarget(self, action: #selector(showTodayExpiredList), for: .touchUpInside)
     }
+    
+    var todayExpired = [String]()
+    var expiredItem = [Item]()
+    var upcomingExpire = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,7 @@ class HomeViewController: UIViewController {
             }
         }
         
-        //MARK: Todo redraw pie chart
+    //MARK: Todo redraw pie chart
     }
     @objc func showTodayExpiredList() {
         //TODO: Apply push today expired list
@@ -85,16 +86,22 @@ class HomeViewController: UIViewController {
    
 }
 
-//MARK: MOVE TO DETAIL
+//MARK: Extension CollectionView
+
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == expiredItemCollectionView {
-            print("item is \(self.expiredItem[indexPath.item].name)")
-        } else {
-            print(self.upcomingExpire[indexPath.item].name)
-        }
         
+        let storyboard = UIStoryboard(name: "JpSong", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailItemViewController") as! DetailItemViewController
+        
+        if collectionView == expiredItemCollectionView {
+            receivepno = Int(self.expiredItem[indexPath.item].id)!
+        } else {
+            receivepno = Int(self.upcomingExpire[indexPath.item].id)!
+        }
+        let destinationNAC = UINavigationController(rootViewController: destinationVC)
+        present(destinationNAC, animated: true, completion: nil)
     }
 }
 
@@ -146,6 +153,7 @@ extension HomeViewController: UICollectionViewDataSource {
     
 }
 
+//MARK: Collection View Cell
 class CellOfHomeView: UICollectionViewCell {
     
     
