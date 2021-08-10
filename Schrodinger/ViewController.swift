@@ -86,7 +86,8 @@ class ViewController: UIViewController {
     @objc func goCjy() {
         let storyboard = UIStoryboard(name: "JyChoi", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "ListMainViewController") as! ListMainViewController
-        destinationVC.modalPresentationStyle = .fullScreen
+        let destinationNAV = UINavigationController(rootViewController: destinationVC)
+        destinationNAV.modalPresentationStyle = .fullScreen
         present(destinationVC, animated: true, completion: nil)
     }
 }
