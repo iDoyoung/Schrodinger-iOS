@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(true)
         
         APIService().performUserItemRequest { items in
-            DispatchQueue.global().async {
+            //DispatchQueue.global().async {
                 self.todayExpired = items.filter{ $0.date == Date().toString() }
                 let todayExpiredNames = self.todayExpired.map { $0.name }
                 self.upcomingExpire = items.filter{ Date() >= $0.date.toDate().beforeOneWeek() && $0.date.toDate() > Date()}
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
                     self.upcomingExpireCollectionView.reloadData()
                     self.todayExpiredItem.text = todayExpiredNames.joined(separator: " ")
                 }
-            }
+            //}
         }
         
     //MARK: Todo redraw pie chart
