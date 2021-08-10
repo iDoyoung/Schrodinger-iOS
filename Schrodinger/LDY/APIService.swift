@@ -11,7 +11,7 @@ class APIService {
     
     let tomcatUserItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_mysql_db.jsp?"
     let tomcatAllItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_all_items_mysql_db.jsp"
-    let tomcatRatioItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_throw_mysql_db.jsp"
+    let tomcatRatioItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_throw_mysql_db.jsp?"
     let imageURL = "http://192.168.2.2:8080/schrodinger/images/"
     
     

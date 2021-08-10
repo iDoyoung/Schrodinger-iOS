@@ -53,6 +53,7 @@
 		69EF468C26B2B67400D8EA91 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF468B26B2B67400D8EA91 /* TestViewController.swift */; };
 		7F0E7FBA26BA798C003D0A34 /* Date+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */; };
 		7F0E7FBC26BA7C72003D0A34 /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */; };
+		7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */; };
 		7F24391926C2B70E0068ABEB /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391526C2B70E0068ABEB /* ReaderView.swift */; };
 		7F24391A26C2B70E0068ABEB /* InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391626C2B70E0068ABEB /* InsertModel.swift */; };
 		7F24391B26C2B70E0068ABEB /* AddItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391726C2B70E0068ABEB /* AddItemDetailViewController.swift */; };
@@ -121,6 +122,7 @@
 		69EF468B26B2B67400D8EA91 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ToString.swift"; sourceTree = "<group>"; };
 		7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
+		7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckTodayViewController.swift; path = ../../../../iDOProject/Schrodinger/Schrodinger/LDY/CheckTodayViewController.swift; sourceTree = "<group>"; };
 		7F24391526C2B70E0068ABEB /* ReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
 		7F24391626C2B70E0068ABEB /* InsertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertModel.swift; sourceTree = "<group>"; };
 		7F24391726C2B70E0068ABEB /* AddItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemDetailViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				508839CD26B250A3007734D4 /* HomeViewController.swift */,
 				5044717F26B3D37900291B86 /* CalendarViewController.swift */,
 				5044718226B3D3BF00291B86 /* WorldViewController.swift */,
+				7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */,
 				50F7BE9E26B78621004F4171 /* PieChart.swift */,
 				50F7BEA026B7C496004F4171 /* APIService.swift */,
 				50F7BEA226B7C4C8004F4171 /* ItemModel.swift */,
@@ -402,6 +405,7 @@
 				698C9C1C26B704C300EF5568 /* ShareIP.swift in Sources */,
 				6980865E26B78724000D997A /* MemoViewController.swift in Sources */,
 				691F70EF26B952A700D1079B /* EditShelflifeUpdate.swift in Sources */,
+				7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */,
 				6995140A26BBA1E600F4BF8A /*  RegistrationdateModel.swift in Sources */,
 				6995140C26BBEC2900F4BF8A /* MemoUpdateModel.swift in Sources */,
 				508839BD26B24BC4007734D4 /* ListMainViewController.swift in Sources */,
