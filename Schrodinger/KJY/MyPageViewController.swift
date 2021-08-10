@@ -7,7 +7,8 @@
 
 import UIKit
 import KakaoSDKUser // MARK: Kakao Login - Logout, 연결 끊기
-import Firebase // MARK: Firebase 초기화
+import Firebase // MARK: Google Login - Firebase 초기화
+import GoogleSignIn
 
 
 class MyPageViewController: UIViewController {
@@ -29,7 +30,9 @@ class MyPageViewController: UIViewController {
         // MARK: userNumberQuery 실행
         self.userNumberQuery()
         
+        
     }
+    
     
     @IBAction func btnLogOut(_ sender: UIButton) {
         // MARK: Kakao Login - Logout
@@ -42,8 +45,9 @@ class MyPageViewController: UIViewController {
 //                self.dismiss(animated: true)
 //            }
 //        }
-        // MARK: Kakao Login - userno UserDefault 확인
+        // MARK: 로그인 공통 - userno UserDefault 확인
         print("userno = \(String(describing: usernoUserDefaults.string(forKey: "userno")))")
+        infoLabel.text = usernoUserDefaults.string(forKey: "userno")
         
         // MARK: Kakao Login - Logout, 연결 끊기
         UserApi.shared.unlink {(error) in
@@ -71,7 +75,7 @@ class MyPageViewController: UIViewController {
         
     }
     
-    // MARK: Kakao Login - user email 받아 DB에 입력
+    // MARK: 로그인 공통 - user email 받아 DB에 입력
     func userEmailInsert(_ id: String) {
         print("id to insert in userEmailInsert func = \(id)")
         if myUserDefaults.string(forKey: "userEmail") != "방문자" {
@@ -107,7 +111,7 @@ class MyPageViewController: UIViewController {
 
     }
     
-    // MARK: Kakao Login - user email(id) 이용해 DB에서 user number(userno) 가져와 user default에 등록
+    // MARK: 로그인 공통 - user email(id) 이용해 DB에서 user number(userno) 가져와 user default에 등록
     func userNumberQuery() {
         print("id to download userno in userNumberQuery func = \(String(describing: myUserDefaults.string(forKey: "userEmail")))")
         let queryModel = UserQueryModel()

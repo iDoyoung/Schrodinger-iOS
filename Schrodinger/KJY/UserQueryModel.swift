@@ -15,7 +15,7 @@ class UserQueryModel{ // : NSObject
     
 //    var delegate: QueryModelProtocol!
     
-    var urlPath = "http://192.168.0.13:8080/schrodinger/user_query_ios.jsp"
+    var urlPath = "http://192.168.219.118:8080/schrodinger/user_query_ios.jsp"
     
     // MARK: query 실행
     func downloadItems(id: String) {

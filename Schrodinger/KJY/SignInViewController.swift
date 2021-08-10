@@ -11,18 +11,21 @@ import KakaoSDKAuth // MARK: Kakao Login - 토큰 존재 여부 확인
 import KakaoSDKUser // MARK: Kakao Login - 로그인 실행, 토큰 가져오기, 사용자 정보 관리, 사용자 정보 가져오기
 import KakaoSDKCommon // MARK: Kakao Login - 토큰 존재 여부 확인 시 Error 처리
 
-import Firebase // MARK: Firebase 초기화
-import GoogleSignIn // MARK: Google Login
-
+import Firebase // MARK: Google Login - Firebase 초기화
+import GoogleSignIn // MARK: Google Login - 로그인 버튼, 로그인 실행 
 
 let myUserDefaults = UserDefaults.standard // MARK: Email(id) UserDefault 선언
 let usernoUserDefaults = UserDefaults.standard // MARK: User Number(userno) UserDefault 선언
+
+var currentUserEmail = "방문자"
 
 class SignInViewController: UIViewController {
 
 //    let myUserDefaults = UserDefaults.standard
     
     @IBOutlet weak var infoLabel: UILabel!
+    
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,7 @@ class SignInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // MARK: Email UserDefault Label에 띄우기
+        // MARK: Email UserDefault를 Label에 띄우기
         //        infoLabel.text = Share.userID
                 infoLabel.text = myUserDefaults.string(forKey: "userEmail")
         //        infoLabel.text = UserDefaults.standard.string(forKey: "userEmail")
@@ -51,28 +54,36 @@ class SignInViewController: UIViewController {
             
             // MARK: Kakao Login - 토큰 존재 여부 확인
             // MARK: Kakao Login - Login email 확인
-            if (AuthApi.hasToken() && myUserDefaults.string(forKey: "userEmail") != "방문자") {
-                UserApi.shared.accessTokenInfo { (_, error) in
-                    if let error = error {
-                        if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
-                            //로그인 필요
-                        }
-                        else {
-                            //기타 에러
-                        }
-                    }
-                    else {
-                        //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-                        // MARK: Kakao Login - 자동 로그인
-                        let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
-                        let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-                        self.present(destinationVC, animated: true, completion: nil)
-                    }
-                }
+//            if (AuthApi.hasToken() && myUserDefaults.string(forKey: "userEmail") != "방문자") {
+//                UserApi.shared.accessTokenInfo { (_, error) in
+//                    if let error = error {
+//                        if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
+//                            //로그인 필요
+//                        }
+//                        else {
+//                            //기타 에러
+//                        }
+//                    }
+//                    else {
+//                        //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+//                        // MARK: Kakao Login - 자동 로그인
+//                        let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
+//                        let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+//                        self.present(destinationVC, animated: true, completion: nil)
+//                    }
+//                }
+//            }
+//            else {
+//                //로그인 필요
+//            }
+            
+            if myUserDefaults.string(forKey: "userEmail") != "방문자" {
+                // MARK: Kakao Login - 자동 로그인
+                let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
+                let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+                self.present(destinationVC, animated: true, completion: nil)
             }
-            else {
-                //로그인 필요
-            }
+            
             
         }
         
@@ -117,7 +128,7 @@ class SignInViewController: UIViewController {
                     _ = oauthToken
                     //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
                     self.setUserInfo()
-                    // MARK: Kakao Login 성공 후 마이페이지 띄우기
+                    // MARK: Kakao Login - 로그인 성공 후 마이페이지 띄우기
                     let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
                     let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
                     self.present(destinationVC, animated: true, completion: nil)
@@ -158,6 +169,7 @@ class SignInViewController: UIViewController {
 //                }
                 
 //                self.infoLabel.text = Share.userID
+                // MARK: Email UserDefault를 Label에 띄우기
                 self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
                 
 //                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
@@ -171,8 +183,9 @@ class SignInViewController: UIViewController {
 
     }
     
-    // MARK: Google Login - 구글 로그인 버튼에 대한 로직 추가
-    @IBAction func btnGoogleLogin(_ sender: UIButton) {
+    
+    // MARK: Google Login - 구글 로그인 버튼(View)에 대한 로직 추가
+    @IBAction func btnGoogleGIDSignIn(_ sender: GIDSignInButton) {
         
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
@@ -184,6 +197,7 @@ class SignInViewController: UIViewController {
 
             if let error = error {
                 // ...
+                print("Google Login error = \(error)")
                 return
             }
 
@@ -200,21 +214,172 @@ class SignInViewController: UIViewController {
         
             // ...
             
-            // MARK: Google Login 성공 후 마이페이지 띄우기
-            let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-            self.present(destinationVC, animated: true, completion: nil)
+            print("clientID = \(clientID)")
+            print("config = \(config)")
+            print("authentication = \(authentication)")
+            print("idToken = \(idToken)")
+            print("credential = \(credential)")
+            
+            
+            // MARK: Google Login - Firebase에 인증, 이전 단계에서 만든 인증 사용자 인증 정보를 사용하여 Firebase 로그인 프로세스를 완료
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                  let authError = error as NSError
+                    if authError.code == AuthErrorCode.secondFactorRequired.rawValue {  // MARK: if isMFAEnabled, - error
+                    // The user is a multi-factor user. Second factor challenge is required.
+                    let resolver = authError
+                      .userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+                    var displayNameString = ""
+                    for tmpFactorInfo in resolver.hints {
+                      displayNameString += tmpFactorInfo.displayName ?? ""
+                      displayNameString += " "
+                    }
+                    self.showTextInputPrompt(
+                      withMessage: "Select factor to sign in\n\(displayNameString)",
+                      completionBlock: { userPressedOK, displayName in
+                        var selectedHint: PhoneMultiFactorInfo?
+                        for tmpFactorInfo in resolver.hints {
+                          if displayName == tmpFactorInfo.displayName {
+                            selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
+                          }
+                        }
+                        PhoneAuthProvider.provider()
+                          .verifyPhoneNumber(with: selectedHint!, uiDelegate: nil,
+                                             multiFactorSession: resolver
+                                               .session) { verificationID, error in
+                            if error != nil {
+                              print(
+                                "Multi factor start sign in failed. Error: \(error.debugDescription)"
+                              )
+                            } else {
+                              self.showTextInputPrompt(
+                                withMessage: "Verification code for \(selectedHint?.displayName ?? "")",
+                                completionBlock: { userPressedOK, verificationCode in
+                                  let credential: PhoneAuthCredential? = PhoneAuthProvider.provider()
+                                    .credential(withVerificationID: verificationID!,
+                                                verificationCode: verificationCode!)
+                                  let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator
+                                    .assertion(with: credential!)
+                                  resolver.resolveSignIn(with: assertion!) { authResult, error in
+                                    if error != nil {
+                                      print(
+                                        "Multi factor finanlize sign in failed. Error: \(error.debugDescription)"
+                                      )
+                                    } else {
+                                      self.navigationController?.popViewController(animated: true)
+                                    }
+                                  }
+                                }
+                              )
+                            }
+                          }
+                      }
+                    )
+                  } else {
+                    self.showMessagePrompt(error.localizedDescription)
+                    return
+                  }
+                  // ...
+                  return
+                }
+                // User is signed in
+                // ...
+                
+                // MARK: Google Login - 사용자 프로필 가져오기
+                let user = Auth.auth().currentUser
+                if let user = user {
+                  // The user's ID, unique to the Firebase project.
+                  // Do NOT use this value to authenticate with your backend server,
+                  // if you have one. Use getTokenWithCompletion:completion: instead.
+                  let uid = user.uid
+                  let email = user.email
+                  let photoURL = user.photoURL
+                    
+                
+                    
+                  var multiFactorString = "MultiFactor: "
+                  for info in user.multiFactor.enrolledFactors {
+                    multiFactorString += info.displayName ?? "[DispayName]"
+                    multiFactorString += " "
+                  }
+                  // ...
+                    print("uid = \(uid)")
+                    print("email = \(String(describing: email))")
+                    print("photoURL = \(String(describing: photoURL))")
+                    
+                    // MARK: Google Login - user email 받아 UserDefault에 등록
+                    if email != nil {
+                        currentUserEmail = email!
+                    }else{
+                        currentUserEmail = "방문자"
+                    }
+                    
+
+                    
+                }
+                
+                // MARK: Google Login - user email 받아 UserDefault에 등록
+                myUserDefaults.set(currentUserEmail, forKey: "userEmail")
+                print("currentUserEmail = \(myUserDefaults.string(forKey: "userEmail"))")
+
+                
+                // MARK: Email UserDefault를 Label에 띄우기
+                self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
+                
+                // MARK: Google Login - 로그인 성공 후 마이페이지 띄우기
+                let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
+                let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+                self.present(destinationVC, animated: true, completion: nil)
+                
+            }
+            
+//            // MARK: Google Login - user email 받아 UserDefault에 등록
+//            myUserDefaults.set(currentUserEmail, forKey: "userEmail")
+//            print("currentUserEmail = \(myUserDefaults.string(forKey: "userEmail"))")
+//
+//
+//            // MARK: Email UserDefault를 Label에 띄우기
+//            self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
+//
+//            // MARK: Google Login - 로그인 성공 후 마이페이지 띄우기
+//            let storyboard = UIStoryboard(name: "JyKim", bundle: nil)
+//            let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+//            self.present(destinationVC, animated: true, completion: nil)
             
             
         }
         
-        
-        
     }
     
     
+    // MARK: Google Login - Firebase에 인증 시 사용
+    func showTextInputPrompt(withMessage message: String,
+                             completionBlock: @escaping ((Bool, String?) -> Void)) {
+      let prompt = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+        completionBlock(false, nil)
+      }
+      weak var weakPrompt = prompt
+      let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+        guard let text = weakPrompt?.textFields?.first?.text else { return }
+        completionBlock(true, text)
+      }
+      prompt.addTextField(configurationHandler: nil)
+      prompt.addAction(cancelAction)
+      prompt.addAction(okAction)
+      present(prompt, animated: true, completion: nil)
+    }
+    
+    // MARK: Google Login - Firebase에 인증 시 사용
+    func showMessagePrompt(_ message: String) {
+      let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+      let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      alert.addAction(okAction)
+      present(alert, animated: false, completion: nil)
+    }
     
     
+
     /*
     // MARK: - Navigation
 
