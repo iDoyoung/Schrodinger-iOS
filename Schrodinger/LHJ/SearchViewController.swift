@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreFoundation
 
-class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -20,21 +21,21 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! SearchTableViewCell
         let item:DBSearchModel = feedItem[indexPath.row] as! DBSearchModel
         print(4)
-        let url = URL(string: "http://192.168.2.101:8080/schrodinger/images/\(item.image!)")
-        print("http://192.168.2.101:8080/schrodinger/images/\(item.image!)")
+        let url = URL(string: "http://10.210.174.44:8080/schrodinger/images/\(item.image!)")
+        print("http://10.210.174.44:8080/schrodinger/images/\(item.image!)")
         let data = try? Data(contentsOf: url!)
-        cell.ImgView.image = (UIImage(data: data!))
-        
+        cell.ImgView.image = UIImage(data: data!)
         print("사진 : \(item.image!)")
-        
         cell.NameTitle?.text = "물품명 : \(item.name!)"
+        print("물품명 : \(item.name!)")
         cell.Date?.text = "유통기간 : \(item.expirationDate!)"
         print("유통기간 : \(item.expirationDate!)")
         print(5)
         return cell
     }
     
-
+    
+    
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var SegmentControl: UISegmentedControl!
     @IBOutlet weak var listTableView: UITableView!
@@ -47,11 +48,45 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.rowHeight = 60
+        
+        SearchBar.delegate = self
+        searchWord(text: String.init())
         print(1)
         // Do any additional setup after loading the view.
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            guard let searchText = searchBar.text, !searchText.isEmpty else { return }
+        let queryModel = SubmitQueryModel()
+        queryModel.delegate = self
+        queryModel.downloadItem(name: SearchBar.text!)
+            print(searchText)
+        }
 
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            print("cancel")
+        }
+    
+    func searchWord(text: String) {
+           let searchedWordArray = feedItem.filter { word -> Bool in
+               (word as AnyObject).name.compareWord(find: text)
+           }
+               feedItem = searchedWordArray as NSArray
+               self.listTableView.reloadData()
+       }
+
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let queryModel = SubmitQueryModel()
+        queryModel.delegate = self
+        queryModel.downloadItem(name: SearchBar.text!)
+    }
     
     @IBAction func SegmentControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -115,5 +150,9 @@ extension SearchViewController:SubmitQueryModelProtocol{
     }
 }
 
-
+extension String {
+    func compareWord(find: String) -> Bool {
+        return self.range(of: find, options: [.caseInsensitive, .anchored]) != nil
+    }
+}
 
