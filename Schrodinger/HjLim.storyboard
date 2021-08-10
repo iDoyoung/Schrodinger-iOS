@@ -45,16 +45,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHM-iT-AmS">
-                                                    <rect key="frame" x="84" y="11" width="49.5" height="21"/>
+                                                    <rect key="frame" x="84" y="11" width="49.5" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="2mU-kl-9bP"/>
+                                                        <constraint firstAttribute="height" constant="20" id="2mU-kl-9bP"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rct-2z-Pzt">
-                                                    <rect key="frame" x="94" y="40" width="37.5" height="18"/>
+                                                    <rect key="frame" x="84" y="39" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -68,12 +68,12 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="rct-2z-Pzt" firstAttribute="leading" secondItem="DKf-Xl-HH2" secondAttribute="trailing" constant="25" id="3Wx-jH-x8H"/>
+                                                <constraint firstItem="rct-2z-Pzt" firstAttribute="leading" secondItem="DKf-Xl-HH2" secondAttribute="trailing" constant="15" id="3Wx-jH-x8H"/>
                                                 <constraint firstItem="DKf-Xl-HH2" firstAttribute="leading" secondItem="mxk-p6-nXB" secondAttribute="leading" constant="15" id="3u0-iG-ZMa"/>
                                                 <constraint firstItem="DKf-Xl-HH2" firstAttribute="top" secondItem="mxk-p6-nXB" secondAttribute="top" constant="3" id="Bje-EQ-Rr1"/>
                                                 <constraint firstItem="PHM-iT-AmS" firstAttribute="top" secondItem="mxk-p6-nXB" secondAttribute="topMargin" id="SBy-PG-7BN"/>
                                                 <constraint firstAttribute="bottom" secondItem="DKf-Xl-HH2" secondAttribute="bottom" constant="3" id="WuH-2Y-bhi"/>
-                                                <constraint firstItem="rct-2z-Pzt" firstAttribute="top" secondItem="PHM-iT-AmS" secondAttribute="bottom" constant="8" symbolic="YES" id="nv8-2g-D43"/>
+                                                <constraint firstItem="rct-2z-Pzt" firstAttribute="top" secondItem="PHM-iT-AmS" secondAttribute="bottom" constant="8" id="nv8-2g-D43"/>
                                                 <constraint firstItem="PHM-iT-AmS" firstAttribute="leading" secondItem="DKf-Xl-HH2" secondAttribute="trailing" constant="15" id="v8g-4d-L8V"/>
                                             </constraints>
                                         </tableViewCellContentView>

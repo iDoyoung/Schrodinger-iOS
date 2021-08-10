@@ -8,7 +8,7 @@
 import UIKit
 import CoreFoundation
 
-class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchControllerDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -50,7 +50,14 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         SearchBar.delegate = self
         searchWord(text: String.init())
-        
+      
+
+        SearchBar.barStyle = .default
+        SearchBar.placeholder = "물품 검색"
+
+        SearchBar.translatesAutoresizingMaskIntoConstraints = true
+        SearchBar.autoresizingMask = [.flexibleWidth]
+        definesPresentationContext = true
         print(1)
         // Do any additional setup after loading the view.
     }
@@ -152,8 +159,10 @@ extension SearchViewController:SubmitQueryModelProtocol{
 }
 
 extension String {
+    
     func compareWord(find: String) -> Bool {
         return self.range(of: find, options: [.caseInsensitive, .anchored]) != nil
     }
 }
+
 
