@@ -35,7 +35,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     
-    
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var SegmentControl: UISegmentedControl!
     @IBOutlet weak var listTableView: UITableView!
@@ -51,6 +50,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         SearchBar.delegate = self
         searchWord(text: String.init())
+        
         print(1)
         // Do any additional setup after loading the view.
     }
@@ -65,6 +65,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             print("cancel")
+            SearchBar.text = ""
         }
     
     func searchWord(text: String) {
