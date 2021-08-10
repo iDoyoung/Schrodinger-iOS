@@ -13,9 +13,16 @@ class CheckTodayViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var expiredItem = [Item]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        tableView.reloadData()
     }
 }
 
@@ -32,19 +39,18 @@ extension CheckTodayViewController: UITableViewDataSource {
         }
         
         cell.textLabel?.text = expiredItem[indexPath.item].name
-        
         DispatchQueue.global().async {
+            guard let url = URL(string: "\(APIService().imageURL)\(self.expiredItem[indexPath.row].image!)") else { return }
+            guard let data = try? Data(contentsOf: url) else { return }
             
+            let image = UIImage(data: data)
             DispatchQueue.main.async {
-                
-                
+                cell.imageView?.image = image
             }
         }
         
         return cell
     }
-    
-    
 }
 
 extension CheckTodayViewController: UITableViewDelegate {

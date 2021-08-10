@@ -33,7 +33,12 @@ class HomeViewController: UIViewController {
         checkTodayButton.addTarget(self, action: #selector(showTodayExpiredList), for: .touchUpInside)
     }
     
-    var todayExpired = [String]()
+    func applyRightNaviagatinItem() {
+        let profileSetButton = UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(profileActionSheet))
+        navigationItem.rightBarButtonItem = profileSetButton
+    }
+    
+    var todayExpired = [Item]()
     var expiredItem = [Item]()
     var upcomingExpire = [Item]()
     
@@ -41,6 +46,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         applyLabel()
         applyButton()
+        applyRightNaviagatinItem()
         expiredItemCollectionView.delegate = self
         expiredItemCollectionView.dataSource = self
         upcomingExpireCollectionView.delegate = self
@@ -62,13 +68,14 @@ class HomeViewController: UIViewController {
         
         APIService().performUserItemRequest { items in
             DispatchQueue.global().async {
-                self.todayExpired = items.filter{ $0.date == Date().toString() }.map { $0.name }
+                self.todayExpired = items.filter{ $0.date == Date().toString() }
+                let todayExpiredNames = self.todayExpired.map { $0.name }
                 self.upcomingExpire = items.filter{ Date() >= $0.date.toDate().beforeOneWeek() && $0.date.toDate() > Date()}
                 self.expiredItem = items.filter{ $0.date.toDate() <= Date() }
                 DispatchQueue.main.sync {
                     self.expiredItemCollectionView.reloadData()
                     self.upcomingExpireCollectionView.reloadData()
-                    self.todayExpiredItem.text = self.todayExpired.joined(separator: " ")
+                    self.todayExpiredItem.text = todayExpiredNames.joined(separator: " ")
                 }
             }
         }
@@ -76,14 +83,31 @@ class HomeViewController: UIViewController {
     //MARK: Todo redraw pie chart
     }
     @objc func showTodayExpiredList() {
-        //TODO: Apply push today expired list
-        
-        //Testing Method
         let storyboard = UIStoryboard(name: "DyLee", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "WorldViewController")
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "CheckTodayViewController") as! CheckTodayViewController
+        
+        APIService().performUserItemRequest { items in
+            destinationVC.expiredItem = items.filter{ $0.date == Date().toString() }
+        }
         present(destinationVC, animated: true, completion: nil)
     }
    
+    @objc func profileActionSheet() {
+        let actionSheet = UIAlertController(title: "Profile Preferences", message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let signOut = UIAlertAction(title: "", style: .default) { _ in
+            //MARK: TODO SET USERDEFAULT
+            print("Sign out")
+        }
+        let deleteMyAccout = UIAlertAction(title: "Delete my account", style: .destructive) { _ in
+            //MARK: TODO SET DELETE ACCOUNT
+            print("Delete Account")
+        }
+        actionSheet.addAction(cancel)
+        actionSheet.addAction(signOut)
+        actionSheet.addAction(deleteMyAccout)
+        present(actionSheet, animated: true, completion: nil)
+    }
 }
 
 //MARK: Extension CollectionView
