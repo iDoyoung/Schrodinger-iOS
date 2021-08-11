@@ -6,14 +6,25 @@
 //
 
 import UIKit
+import KakaoSDKCommon // MARK: Kakao Login
+import Firebase // MARK: Firebase 초기화
+import GoogleSignIn // MARK: Google Login
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    // MARK: GIDSignIn 인스턴스의 handleURL 메서드를 호출하여 인증 프로세스가 끝날 때 애플리케이션이 수신하는 URL을 적절히 처리
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any])
+      -> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        KakaoSDKCommon.initSDK(appKey: "e5f026943ba5dc9ef43e7249564eba5b") // MARK: Kakao Login - Kakao SDK 초기화, 네이티브 앱 키 입력
+        FirebaseApp.configure() // MARK: Firebase 초기화
         return true
     }
 
