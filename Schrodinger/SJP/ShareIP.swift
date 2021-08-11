@@ -9,8 +9,8 @@ import Foundation
 
 struct Share {
     
-    static var urlIP: String = "http://192.168.2.2:8080/schrodinger/"
-    static var imageurlIP: String = "http://192.168.2.2:8080/schrodinger/images/"
+    static var urlIP: String = "http://\(Util.shared.api):8080/schrodinger/"
+    static var imageurlIP: String = "http://\(Util.shared.api):8080/schrodinger/images/"
     static var memoMove: String = ""
     static var memoCount: Int = 1
 }

@@ -101,9 +101,12 @@ extension ListDetailMedicineViewController: UITableViewDataSource, UITableViewDe
         // cell. 다음 tableViewCell 이름!
         // cell - 이미지
         let imgurl = share.imgUrl("\(item.image ?? "noImage.png")")
-        let data = try? Data(contentsOf: URL(string: imgurl)!)
-        cell.imgMedicine.image = UIImage(data: data!)
-        
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: URL(string: imgurl)!) else { return }
+            DispatchQueue.main.async {
+                cell.imgMedicine.image = UIImage(data: data)
+            }
+        }
         // cell - 이름/유통기한
         cell.lblMedsName?.text = "\(item.name!)"
         cell.lblMedsExp?.text = "\(item.expirationDate!)"

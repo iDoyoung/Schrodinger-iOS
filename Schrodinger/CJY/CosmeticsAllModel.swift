@@ -30,6 +30,9 @@ class CosmeticsAllModel{
             }
             
             guard let data = data else {
+                DispatchQueue.main.async {
+                    self.delegate.itemDownloaded(items: [])
+                }
                 return
             }
                 print("Data is download")
@@ -70,10 +73,6 @@ class CosmeticsAllModel{
                 self.delegate.itemDownloaded(items: locations)
             })
         }
-//        // async 방식은 Dispatch가 사용된다.
-//        DispatchQueue.main.async(execute: {() -> Void in
-//            self.delegate.itemDownloaded(items: locations)
-//        }) // Void 함수
         
     }
 }

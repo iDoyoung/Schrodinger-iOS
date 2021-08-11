@@ -29,19 +29,10 @@
 		508839DA26B26430007734D4 /* JyChoi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839D926B26430007734D4 /* JyChoi.storyboard */; };
 		508839DD26B2643D007734D4 /* HjLim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DC26B2643D007734D4 /* HjLim.storyboard */; };
 		508839E026B26449007734D4 /* DyLee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508839DF26B26449007734D4 /* DyLee.storyboard */; };
-		63368B78579F987D5D82F6DB /* Pods_Schrodinger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585EBD1C04F4381E5EBD8133 /* Pods_Schrodinger.framework */; };
-		A16B9AFE26B7E9F000A5DB34 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B9AFD26B7E9F000A5DB34 /* MyPageViewController.swift */; };
-		A1A7AE3226B8DBF90016089B /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7AE3126B8DBF90016089B /* Share.swift */; };
-		A1A7AE3426B921470016089B /* UserInsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7AE3326B921470016089B /* UserInsertModel.swift */; };
-		A1A7AE3626B9383B0016089B /* UserQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7AE3526B9383B0016089B /* UserQueryModel.swift */; };
-		A1A7AE3826BBB23E0016089B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1A7AE3726BBB23E0016089B /* GoogleService-Info.plist */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		504E232868CEB06E96C6CC3B /* Pods-Schrodinger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schrodinger.debug.xcconfig"; path = "Target Support Files/Pods-Schrodinger/Pods-Schrodinger.debug.xcconfig"; sourceTree = "<group>"; };
 		50F7BE9F26B78621004F4171 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BE9E26B78621004F4171 /* PieChart.swift */; };
 		50F7BEA126B7C496004F4171 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BEA026B7C496004F4171 /* APIService.swift */; };
 		50F7BEA326B7C4C8004F4171 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7BEA226B7C4C8004F4171 /* ItemModel.swift */; };
+		63368B78579F987D5D82F6DB /* Pods_Schrodinger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585EBD1C04F4381E5EBD8133 /* Pods_Schrodinger.framework */; };
 		677E1EB526B7B6A20076ACCE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E1EB426B7B6A20076ACCE /* SearchTableViewCell.swift */; };
 		677E1EB726B7CC760076ACCE /* UseQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E1EB626B7CC760076ACCE /* UseQueryModel.swift */; };
 		677E1EBB26B7CCAA0076ACCE /* SubmitQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E1EBA26B7CCAA0076ACCE /* SubmitQueryModel.swift */; };
@@ -63,11 +54,13 @@
 		69EF468C26B2B67400D8EA91 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF468B26B2B67400D8EA91 /* TestViewController.swift */; };
 		7F0E7FBA26BA798C003D0A34 /* Date+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */; };
 		7F0E7FBC26BA7C72003D0A34 /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */; };
-		7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */; };
 		7F24391926C2B70E0068ABEB /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391526C2B70E0068ABEB /* ReaderView.swift */; };
 		7F24391A26C2B70E0068ABEB /* InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391626C2B70E0068ABEB /* InsertModel.swift */; };
 		7F24391B26C2B70E0068ABEB /* AddItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391726C2B70E0068ABEB /* AddItemDetailViewController.swift */; };
 		7F24391C26C2B70E0068ABEB /* ReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24391826C2B70E0068ABEB /* ReaderViewController.swift */; };
+		7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */; };
+		7FFEFA2F26C3C5B400B385A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEFA2E26C3C5B400B385A8 /* GoogleService-Info.plist */; };
+		7FFEFA3126C4156B00B385A8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEFA3026C4156B00B385A8 /* Util.swift */; };
 		905B652326B8F457005BAE31 /* DBModel_CJY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652226B8F457005BAE31 /* DBModel_CJY.swift */; };
 		905B652526B8F667005BAE31 /* FoodAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652426B8F667005BAE31 /* FoodAllModel.swift */; };
 		905B652726B9087C005BAE31 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B652626B9087C005BAE31 /* TableViewCell.swift */; };
@@ -75,6 +68,10 @@
 		905B653126BBD660005BAE31 /* CosmeticsAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B653026BBD660005BAE31 /* CosmeticsAllModel.swift */; };
 		905B653526BBDCAA005BAE31 /* ProductDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B653426BBDCAA005BAE31 /* ProductDeleteModel.swift */; };
 		905B653726BBE2EE005BAE31 /* MedicineAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B653626BBE2EE005BAE31 /* MedicineAllModel.swift */; };
+		A16B9AFE26B7E9F000A5DB34 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B9AFD26B7E9F000A5DB34 /* MyPageViewController.swift */; };
+		A1A7AE3226B8DBF90016089B /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7AE3126B8DBF90016089B /* Share.swift */; };
+		A1A7AE3426B921470016089B /* UserInsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7AE3326B921470016089B /* UserInsertModel.swift */; };
+		A1A7AE3626B9383B0016089B /* UserQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7AE3526B9383B0016089B /* UserQueryModel.swift */; };
 		A6E91A2626B7C4C90049C61C /* ListDetailFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */; };
 		A6E91A2826B7C5470049C61C /* ListDetailCosmeticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */; };
 		A6E91A2A26B7C5820049C61C /* ListDetailMedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */; };
@@ -83,6 +80,7 @@
 /* Begin PBXFileReference section */
 		5044717F26B3D37900291B86 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5044718226B3D3BF00291B86 /* WorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
+		504E232868CEB06E96C6CC3B /* Pods-Schrodinger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schrodinger.debug.xcconfig"; path = "Target Support Files/Pods-Schrodinger/Pods-Schrodinger.debug.xcconfig"; sourceTree = "<group>"; };
 		5088398E26B24282007734D4 /* Schrodinger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schrodinger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5088399126B24282007734D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5088399326B24282007734D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,16 +106,10 @@
 		508839D926B26430007734D4 /* JyChoi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JyChoi.storyboard; sourceTree = "<group>"; };
 		508839DC26B2643D007734D4 /* HjLim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HjLim.storyboard; sourceTree = "<group>"; };
 		508839DF26B26449007734D4 /* DyLee.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DyLee.storyboard; sourceTree = "<group>"; };
-		585EBD1C04F4381E5EBD8133 /* Pods_Schrodinger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Schrodinger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		93308F4333E47BB65CD06DEC /* Pods-Schrodinger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schrodinger.release.xcconfig"; path = "Target Support Files/Pods-Schrodinger/Pods-Schrodinger.release.xcconfig"; sourceTree = "<group>"; };
-		A16B9AFD26B7E9F000A5DB34 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		A1A7AE3126B8DBF90016089B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
-		A1A7AE3326B921470016089B /* UserInsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInsertModel.swift; sourceTree = "<group>"; };
-		A1A7AE3526B9383B0016089B /* UserQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQueryModel.swift; sourceTree = "<group>"; };
-		A1A7AE3726BBB23E0016089B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50F7BE9E26B78621004F4171 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		50F7BEA026B7C496004F4171 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		50F7BEA226B7C4C8004F4171 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		585EBD1C04F4381E5EBD8133 /* Pods_Schrodinger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Schrodinger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		677E1EB426B7B6A20076ACCE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		677E1EB626B7CC760076ACCE /* UseQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseQueryModel.swift; sourceTree = "<group>"; };
 		677E1EBA26B7CCAA0076ACCE /* SubmitQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitQueryModel.swift; sourceTree = "<group>"; };
@@ -139,11 +131,13 @@
 		69EF468B26B2B67400D8EA91 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7F0E7FB926BA798C003D0A34 /* Date+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ToString.swift"; sourceTree = "<group>"; };
 		7F0E7FBB26BA7C72003D0A34 /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
-		7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckTodayViewController.swift; path = ../../../../iDOProject/Schrodinger/Schrodinger/LDY/CheckTodayViewController.swift; sourceTree = "<group>"; };
 		7F24391526C2B70E0068ABEB /* ReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
 		7F24391626C2B70E0068ABEB /* InsertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertModel.swift; sourceTree = "<group>"; };
 		7F24391726C2B70E0068ABEB /* AddItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemDetailViewController.swift; sourceTree = "<group>"; };
 		7F24391826C2B70E0068ABEB /* ReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderViewController.swift; sourceTree = "<group>"; };
+		7FC6C3B626C01D8500856F71 /* CheckTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckTodayViewController.swift; path = ../../../../iDOProject/Schrodinger/Schrodinger/LDY/CheckTodayViewController.swift; sourceTree = "<group>"; };
+		7FFEFA2E26C3C5B400B385A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7FFEFA3026C4156B00B385A8 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		905B652226B8F457005BAE31 /* DBModel_CJY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel_CJY.swift; sourceTree = "<group>"; };
 		905B652426B8F667005BAE31 /* FoodAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAllModel.swift; sourceTree = "<group>"; };
 		905B652626B9087C005BAE31 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +145,11 @@
 		905B653026BBD660005BAE31 /* CosmeticsAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticsAllModel.swift; sourceTree = "<group>"; };
 		905B653426BBDCAA005BAE31 /* ProductDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDeleteModel.swift; sourceTree = "<group>"; };
 		905B653626BBE2EE005BAE31 /* MedicineAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineAllModel.swift; sourceTree = "<group>"; };
+		93308F4333E47BB65CD06DEC /* Pods-Schrodinger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schrodinger.release.xcconfig"; path = "Target Support Files/Pods-Schrodinger/Pods-Schrodinger.release.xcconfig"; sourceTree = "<group>"; };
+		A16B9AFD26B7E9F000A5DB34 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		A1A7AE3126B8DBF90016089B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		A1A7AE3326B921470016089B /* UserInsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInsertModel.swift; sourceTree = "<group>"; };
+		A1A7AE3526B9383B0016089B /* UserQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQueryModel.swift; sourceTree = "<group>"; };
 		A6E91A2526B7C4C90049C61C /* ListDetailFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailFoodViewController.swift; sourceTree = "<group>"; };
 		A6E91A2726B7C5470049C61C /* ListDetailCosmeticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailCosmeticsViewController.swift; sourceTree = "<group>"; };
 		A6E91A2926B7C5820049C61C /* ListDetailMedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailMedicineViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +197,7 @@
 		5088399026B24282007734D4 /* Schrodinger */ = {
 			isa = PBXGroup;
 			children = (
+				7FFEFA2E26C3C5B400B385A8 /* GoogleService-Info.plist */,
 				508839DF26B26449007734D4 /* DyLee.storyboard */,
 				508839DC26B2643D007734D4 /* HjLim.storyboard */,
 				508839D926B26430007734D4 /* JyChoi.storyboard */,
@@ -205,6 +205,7 @@
 				508839D326B262DC007734D4 /* JpSong.storyboard */,
 				508839D026B262C7007734D4 /* JyKim.storyboard */,
 				5088399526B24282007734D4 /* ViewController.swift */,
+				7FFEFA3026C4156B00B385A8 /* Util.swift */,
 				508839CB26B24C72007734D4 /* CJY */,
 				508839C626B24C21007734D4 /* KJY */,
 				508839CA26B24C67007734D4 /* LHJ */,
@@ -217,7 +218,6 @@
 				5088399A26B24293007734D4 /* Assets.xcassets */,
 				5088399C26B24293007734D4 /* LaunchScreen.storyboard */,
 				5088399F26B24293007734D4 /* Info.plist */,
-				A1A7AE3726BBB23E0016089B /* GoogleService-Info.plist */,
 				508839A626B2433D007734D4 /* String+Localized.swift */,
 				508839AE26B245FB007734D4 /* Localizable.strings */,
 			);
@@ -393,7 +393,7 @@
 				508839D126B262C7007734D4 /* JyKim.storyboard in Resources */,
 				508839E026B26449007734D4 /* DyLee.storyboard in Resources */,
 				5088399926B24282007734D4 /* Main.storyboard in Resources */,
-				A1A7AE3826BBB23E0016089B /* GoogleService-Info.plist in Resources */,
+				7FFEFA2F26C3C5B400B385A8 /* GoogleService-Info.plist in Resources */,
 				508839DA26B26430007734D4 /* JyChoi.storyboard in Resources */,
 				508839D426B262DC007734D4 /* JpSong.storyboard in Resources */,
 			);
@@ -497,6 +497,7 @@
 				698C9C1C26B704C300EF5568 /* ShareIP.swift in Sources */,
 				6980865E26B78724000D997A /* MemoViewController.swift in Sources */,
 				691F70EF26B952A700D1079B /* EditShelflifeUpdate.swift in Sources */,
+				7FFEFA3126C4156B00B385A8 /* Util.swift in Sources */,
 				7FC6C3B726C01D8500856F71 /* CheckTodayViewController.swift in Sources */,
 				6995140A26BBA1E600F4BF8A /*  RegistrationdateModel.swift in Sources */,
 				6995140C26BBEC2900F4BF8A /* MemoUpdateModel.swift in Sources */,

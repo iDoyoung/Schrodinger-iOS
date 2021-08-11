@@ -9,10 +9,11 @@ import Foundation
 
 class APIService {
     
-    let tomcatUserItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_mysql_db.jsp?"
-    let tomcatAllItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_all_items_mysql_db.jsp"
-    let tomcatRatioItemURL = "http://192.168.2.2:8080/schrodinger/schrodinger_throw_mysql_db.jsp?"
-    let imageURL = "http://192.168.2.2:8080/schrodinger/images/"
+    let tomcatUserItemURL = "http://\(Util.shared.api):8080/schrodinger/schrodinger_mysql_db.jsp?"
+    let tomcatAllItemURL = "http://\(Util.shared.api):8080/schrodinger/schrodinger_all_items_mysql_db.jsp"
+    let tomcatRatioItemURL = "http://\(Util.shared.api):8080/schrodinger/schrodinger_throw_mysql_db.jsp?"
+    let tomcatCalendarURL = "http://\(Util.shared.api):8080/schrodinger/schrodinger_mysql_db_calendar.jsp?"
+    let imageURL = "http://\(Util.shared.api):8080/schrodinger/images/"
     
     
     func performUserItemRequest(completion: @escaping ([Item]) -> Void) {
@@ -63,6 +64,34 @@ class APIService {
         }.resume()
     }
     
+    //MARK: Calendar API
+    func performCalendarRequest(completion: @escaping ([CalendarItem]) -> Void) {
+        
+        let session = URLSession(configuration: .default)
+        var urlComponents = URLComponents(string: tomcatCalendarURL)!
+        
+        let idQuery = URLQueryItem(name: "id", value: "1")
+        
+        urlComponents.queryItems?.append(idQuery)
+        let requestURL = urlComponents.url!
+        print(requestURL)
+        session.dataTask(with: requestURL) { data, response, error in
+            guard error == nil else {
+                return
+            }
+            
+            guard let resultData = data else {
+                completion([])
+                print("Data is empty")
+                return
+            }
+            
+            let items = APIService.parseCalendarJSON(resultData)
+            completion(items)
+            print(items.count)
+        }.resume()
+        
+    }
 //    func pefromRatioItemRequest(completion: @escaping () -> Void) {
 //        
 //        let session = URLSession(configuration: .default)
@@ -111,6 +140,17 @@ class APIService {
         }
     }
     
+    static func parseCalendarJSON(_ data: Data) -> [CalendarItem] {
+        let decoder = JSONDecoder()
+        do {
+            let response = try decoder.decode(ResponseCalendarItem.self, from: data)
+            let items = response.items
+            return items
+        } catch let error {
+            print("Error: \(error.localizedDescription)")
+            return []
+        }
+    }
 //    static func pares(_ data: Data) -> [] {
 //        let decoder = JSONDecoder()
 //        do {

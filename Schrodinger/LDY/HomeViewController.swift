@@ -116,6 +116,7 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "HjYang", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "AddItemViewController") as! AddItemViewController
         let destinationNAV = UINavigationController(rootViewController: destinationVC)
+        destinationNAV.modalPresentationStyle = .fullScreen
         present(destinationNAV, animated: true, completion: nil)
     }
 }

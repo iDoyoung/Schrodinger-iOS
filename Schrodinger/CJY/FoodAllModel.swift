@@ -10,7 +10,7 @@ import Foundation
 // MARK: protocol FoodAllModelProtocol
 protocol FoodAllModelProtocol{
     
-    func itemDownloaded(items: NSMutableArray) // 배열 만드는 것 NSArray(NS = Next Step)
+    func itemDownloaded(items: NSMutableArray)
     
 }
 
@@ -30,14 +30,13 @@ class FoodAllModel{
             }
             
             guard let data = data else {
+                DispatchQueue.main.async {
+                    self.delegate.itemDownloaded(items: [])
+                }
                 return
             }
-            //if error != nil{
-                //print("Failed to download data")
-            //}else{
-                print("Data is download")
-            self.parseJSON(data) // 데이터 받아서 파싱해주는 것
-            //}
+            print("Data is download")
+            self.parseJSON(data)
             
         }
         task.resume()
@@ -73,12 +72,7 @@ class FoodAllModel{
             DispatchQueue.main.async(execute: {() -> Void in
                 self.delegate.itemDownloaded(items: locations)
             })
-        }       
-//        // async 방식은 Dispatch가 사용된다.
-//        DispatchQueue.main.async(execute: {() -> Void in
-//            self.delegate.itemDownloaded(items: locations)
-//        }) // Void 함수
-        
+        }
     }
 }
 

@@ -103,9 +103,13 @@ extension ListDetailCosmeticsViewController: UITableViewDataSource, UITableViewD
         // cell - 이미지
         let imgurl = share.imgUrl("\(item.image ?? "noImage.png")")
     //    let imgurl = URL(string: "http://192.168.2.102:8080/schrodinger/images/\(item.image ?? "noImage.png")?id=1")
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: URL(string: imgurl)!) else { return }
+            DispatchQueue.main.async {
+                cell.imgCosmetics.image = UIImage(data: data)
+            }
+        }
         
-        let data = try? Data(contentsOf: URL(string: imgurl)!)
-        cell.imgCosmetics.image = UIImage(data: data!)
         
         // cell - 이름/유통기한
         cell.lblCosName?.text = "\(item.name!)"

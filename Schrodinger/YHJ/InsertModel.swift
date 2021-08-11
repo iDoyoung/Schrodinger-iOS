@@ -11,7 +11,7 @@ import Foundation
 class InsertModel{
     //jsonmodel 이 portocol 을 가지고 있음
    
-    var urlPath = "http://172.30.43.146:8080/schrodinger/schrodingerInsert_ios.jsp"
+    var urlPath = "http://\(Util.shared.api):8080/schrodinger/schrodingerInsert_ios.jsp"
     
     func insertItems(name: String, category: String, expirationdate: String, memo: String, image: String) -> Bool {
         

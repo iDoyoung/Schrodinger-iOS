@@ -103,9 +103,12 @@ extension ListDetailFoodViewController: UITableViewDataSource, UITableViewDelega
         let imgurl = share.imgUrl("\(item.image ?? "noImage.png")")
     //    let imgurl = URL(string: "http://192.168.2.102:8080/schrodinger/images/\(item.image ?? "noImage.png")?id=1")
         
-        let data = try? Data(contentsOf: URL(string: imgurl)!)
-        cell.imgFood.image = UIImage(data: data!)
-        
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: URL(string: imgurl)!) else { return }
+            DispatchQueue.main.async {
+                cell.imgFood.image = UIImage(data: data)
+            }
+        }
         // cell - 이름/유통기한
         cell.lblFoodName?.text = "\(item.name!)"
         cell.lblFoodExp?.text = "\(item.expirationDate!)"
