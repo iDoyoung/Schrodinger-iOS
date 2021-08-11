@@ -12,7 +12,7 @@ class UseAllModel{
    
     var urlPath = "\(Share.urlIP)UseAllinsert.jsp"
     
-    func UseAllItems(u_user_no: Int,u_product_no: Int,useCompletionDate: String, pname: String) -> Bool{
+    func UseAllItems(u_user_no: String,u_product_no: Int,useCompletionDate: String, pname: String) -> Bool{
         var result: Bool = true
         let urlAdd = "?useCompletionDate=\(useCompletionDate)&pname=\(pname)&u_user_no=\(u_user_no)&u_product_no=\(u_product_no)"
         

@@ -11,12 +11,14 @@ import UIKit
 // 지연님께 받아야하는 값
 var receivepno = 1
 var receiveuid = "" // 탭뷰에서 넘어올때 유저 아이디
-var receiveuno = 2// 탭뷰에서 넘어올때 유저 no
+
 
 var pname = "" // slq에서 상품의 이름 들어가는 곳
 
 
 class DetailItemViewController: UIViewController {
+    
+    var receiveuno = Util.shared.id// 탭뷰에서 넘어올때 유저 no
     
     var MemoSend = ""
     var memo = ""
@@ -267,7 +269,7 @@ extension DetailItemViewController : QueryDetailProtocol {
         self.QueryDetailcount = locationcont
         loadDetailUI()
         
-        purchaseModel.DetailPurchasedownloadItems(pname: pname, u_user_no: 1)
+        purchaseModel.DetailPurchasedownloadItems(pname: pname, u_user_no: receiveuno)
         queryThrow.DetailThrowdownloadItems(pname: pname, u_user_no: receiveuno)
     }
 }

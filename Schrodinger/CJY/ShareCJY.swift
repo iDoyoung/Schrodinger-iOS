@@ -10,12 +10,12 @@ import Foundation
 struct ShareCJY {
     
     func url(_ fileName: String) -> String{
-        let url = "http://\(Util.shared.api):8080/schrodinger/\(fileName)?id=1"
+        let url = "http://\(Util.shared.api):8080/schrodinger/\(fileName)?id=\(Util.shared.id)"
         return url
     }
     
     func imgUrl(_ fileName: String) -> String{
-        let url = "http://\(Util.shared.api):8080/schrodinger/images/\(fileName)?id=1"
+        let url = "http://\(Util.shared.api):8080/schrodinger/images/\(fileName)?id=\(Util.shared.id)"
         return url
     }
 }

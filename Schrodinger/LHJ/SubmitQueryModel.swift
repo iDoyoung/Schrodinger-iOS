@@ -12,7 +12,7 @@ protocol SubmitQueryModelProtocol{
 
 class SubmitQueryModel: NSObject {
     var delegate: SubmitQueryModelProtocol!
-    var urlPath = "http://\(Util.shared.api):8080/schrodinger/submit_product_query_ios.jsp"
+    var urlPath = "http://\(Util.shared.api):8080/schrodinger/submit_product_query_ios.jsp?id=\(Util.shared.id)"
         
     func downloadItem(name:String) -> Bool{
             var result: Bool = true

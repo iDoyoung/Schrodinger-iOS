@@ -17,7 +17,7 @@ class QueryPurchase{
     var delegate: QueryPurchaseProtocol!
     var urlPath = "\(Share.urlIP)DetailPurchase.jsp"
     
-    func DetailPurchasedownloadItems(pname: String, u_user_no: Int){
+    func DetailPurchasedownloadItems(pname: String, u_user_no: String){
         
         let urlAdd = "?pname=\(pname)&u_user_no=\(u_user_no)"
         

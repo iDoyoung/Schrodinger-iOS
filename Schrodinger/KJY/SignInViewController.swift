@@ -22,29 +22,29 @@ var currentUserEmail = "방문자"
 class SignInViewController: UIViewController {
     
     //    let myUserDefaults = UserDefaults.standard
-    
-    @IBOutlet weak var infoLabel: UILabel!
-    
+   
     @IBOutlet weak var signInButton: GIDSignInButton!
     
+    @IBOutlet weak var privacyLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        privacyLabel.text = "By continuing, you agree to Schrödingers’s Terms of Service and Privacy Policy."
         // Do any additional setup after loading the view.
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         // MARK: Email UserDefault를 Label에 띄우기
         //        infoLabel.text = Share.userID
-        infoLabel.text = myUserDefaults.string(forKey: "userEmail")
+        //infoLabel.text = myUserDefaults.string(forKey: "userEmail")
         //        infoLabel.text = UserDefaults.standard.string(forKey: "userEmail")
         
         
         // MARK: Kakao Login - Email 필수동의 Alert 띄우기
         if myUserDefaults.string(forKey: "userEmail") == "방문자" {
             
-            infoLabel.text = myUserDefaults.string(forKey: "userEmail")
+            //infoLabel.text = myUserDefaults.string(forKey: "userEmail")
             let idAlert = UIAlertController(title: "주의", message: "카카오 로그인은 이메일 제공 동의 필수", preferredStyle: .alert)
             let idAction = UIAlertAction(title: "Yes", style: .default, handler: nil)
             idAlert.addAction(idAction)
@@ -76,13 +76,22 @@ class SignInViewController: UIViewController {
             //            else {
             //                //로그인 필요
             //            }
-            
-            if myUserDefaults.string(forKey: "userEmail") != "방문자" {
-                // MARK: Kakao Login - 자동 로그인
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-//                self.present(destinationVC, animated: true, completion: nil)
+            guard let userDefault = myUserDefaults.string(forKey: "userEmail") else {
+                print("Email =\(String(describing: myUserDefaults.string(forKey: "userEmail")))")
+                return
             }
+            print("UserDefault: \(userDefault)")
+            performSegue(withIdentifier: "loginSegue", sender: self)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+//            self.present(destinationVC, animated: true, completion: nil)
+//            if myUserDefaults.string(forKey: "userEmail") != "방문자" {
+//                // MARK: Kakao Login - 자동 로그인
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+//                print(myUserDefaults.string(forKey: "userEmail") ?? "nil")
+//                self.present(destinationVC, animated: true, completion: nil)
+//            }
             
             
         }
@@ -170,7 +179,7 @@ class SignInViewController: UIViewController {
                 
                 //                self.infoLabel.text = Share.userID
                 // MARK: Email UserDefault를 Label에 띄우기
-                self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
+                //self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
                 
                 //                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
                 //                    let data = try? Data(contentsOf: url) {
@@ -308,28 +317,36 @@ class SignInViewController: UIViewController {
                     print("photoURL = \(String(describing: photoURL))")
                     
                     // MARK: Google Login - user email 받아 UserDefault에 등록
-                    if email != nil {
-                        currentUserEmail = email!
-                    }else{
-                        currentUserEmail = "방문자"
+//                    if email != nil {
+//                        currentUserEmail = email!
+//                    }else{
+//                        //currentUserEmail = "방문자"
+//                    }
+                    
+                    guard let email = email else {
+                        return
                     }
+                    myUserDefaults.set(email, forKey: "userEmail")
                     
+                    performSegue(withIdentifier: "loginSegue", sender: self)
                     
-                    
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+//                    self.present(destinationVC, animated: true, completion: nil)
                 }
                 
                 // MARK: Google Login - user email 받아 UserDefault에 등록
-                myUserDefaults.set(currentUserEmail, forKey: "userEmail")
-                print("currentUserEmail = \(myUserDefaults.string(forKey: "userEmail"))")
+//                myUserDefaults.set(currentUserEmail, forKey: "userEmail")
+//                print("currentUserEmail = \(myUserDefaults.string(forKey: "userEmail"))")
                 
                 
                 // MARK: Email UserDefault를 Label에 띄우기
-                self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
+                //self.infoLabel.text = myUserDefaults.string(forKey: "userEmail")
                 
                 // MARK: Google Login - 로그인 성공 후 마이페이지 띄우기
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-                self.present(destinationVC, animated: true, completion: nil)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+//                self.present(destinationVC, animated: true, completion: nil)
                 
             }
             
@@ -351,6 +368,14 @@ class SignInViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.userEmailInsert(myUserDefaults.string(forKey: "userEmail")!)
+        
+        // MARK: userNumberQuery 실행
+        self.userNumberQuery()
+        Util.shared.id = usernoUserDefaults.string(forKey: "userno") ?? "0"
+        print("id is \(Util.shared.id)")
+    }
     
     // MARK: Google Login - Firebase에 인증 시 사용
     func showTextInputPrompt(withMessage message: String,
@@ -379,7 +404,50 @@ class SignInViewController: UIViewController {
     }
     
     
+    // MARK: 로그인 공통 - user email 받아 DB에 입력
+    func userEmailInsert(_ id: String) {
+        print("id to insert in userEmailInsert func = \(id)")
+        if myUserDefaults.string(forKey: "userEmail") != "방문자" {
+//            let id = myUserDefaults.string(forKey: "userEmail")
+            
+            let userInsertModel = UserInsertModel()
+            let result = userInsertModel.insertItems(id: id)
+            
+            if result{
+                print("입력 완료 - email : \(String(describing: myUserDefaults.string(forKey: "userEmail")))")
+    //            let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다!", preferredStyle: .alert)
+    //            let onAction = UIAlertAction(title: "OK", style: .default, handler: { ACTION in
+    //                self.navigationController?.popViewController(animated: true)
+    //            })
+    //
+    //            resultAlert.addAction(onAction)
+    //            present(resultAlert, animated: true, completion: nil)
+                
+            }else{
+                print("에러 발생 - email : \(String(describing: myUserDefaults.string(forKey: "userEmail")))")
+    //            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다!", preferredStyle: .alert)
+    //            let onAction = UIAlertAction(title: "OK", style: .default, handler: { ACTION in
+    //                self.navigationController?.popViewController(animated: true)
+    //            })
+    //
+    //            resultAlert.addAction(onAction)
+    //            present(resultAlert, animated: true, completion: nil)
+            }
+            
+        } else{
+            return
+        }
+
+    }
     
+    // MARK: 로그인 공통 - user email(id) 이용해 DB에서 user number(userno) 가져와 user default에 등록
+    func userNumberQuery() {
+        print("id to download userno in userNumberQuery func = \(String(describing: myUserDefaults.string(forKey: "userEmail")))")
+        let queryModel = UserQueryModel()
+        queryModel.downloadItems(id: myUserDefaults.string(forKey: "userEmail")!)
+        
+    }
+
     
     
 }

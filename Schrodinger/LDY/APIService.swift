@@ -21,7 +21,7 @@ class APIService {
         let session = URLSession(configuration: .default)
         var urlComponents = URLComponents(string: tomcatUserItemURL)!
         
-        let idQuery = URLQueryItem(name: "id", value: "1")
+        let idQuery = URLQueryItem(name: "id", value: Util.shared.id)
         
         urlComponents.queryItems?.append(idQuery)
         let requestURL = urlComponents.url!
@@ -70,7 +70,7 @@ class APIService {
         let session = URLSession(configuration: .default)
         var urlComponents = URLComponents(string: tomcatCalendarURL)!
         
-        let idQuery = URLQueryItem(name: "id", value: "1")
+        let idQuery = URLQueryItem(name: "id", value: Util.shared.id)
         
         urlComponents.queryItems?.append(idQuery)
         let requestURL = urlComponents.url!

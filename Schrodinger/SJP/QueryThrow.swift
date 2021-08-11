@@ -17,7 +17,7 @@ class QueryThrow{
     var delegate: QueryThrowProtocol!
     var urlPath = "\(Share.urlIP)DetailThrow_song.jsp"
     
-    func DetailThrowdownloadItems(pname: String, u_user_no: Int){
+    func DetailThrowdownloadItems(pname: String, u_user_no: String){
         let urlAdd = "?pname=\(pname)&u_user_no=\(u_user_no)"
         
         urlPath = urlPath + urlAdd

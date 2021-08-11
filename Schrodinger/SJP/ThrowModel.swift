@@ -13,7 +13,7 @@ class ThrowModel{
    
     var urlPath = "\(Share.urlIP)Trowinsert.jsp"
     
-    func ThrowItems(u_user_no: Int,u_product_no: Int,throwDate: String, pname: String) -> Bool{
+    func ThrowItems(u_user_no: String,u_product_no: Int,throwDate: String, pname: String) -> Bool{
         var result: Bool = true
         let urlAdd = "?throwDate=\(throwDate)&pname=\(pname)&u_user_no=\(u_user_no)&u_product_no=\(u_product_no)"
         
