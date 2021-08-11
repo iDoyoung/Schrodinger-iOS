@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "ListMainViewController") as! ListMainViewController
         let destinationNAV = UINavigationController(rootViewController: destinationVC)
         destinationNAV.modalPresentationStyle = .fullScreen
-        present(destinationVC, animated: true, completion: nil)
+        present(destinationNAV, animated: true, completion: nil)
     }
 }
 

@@ -9,34 +9,27 @@ import Foundation
 
 
 protocol QueryDetailProtocol{
-    func itemDownloaded(items: NSMutableArray , locationcont: Int) // data를 NSArray로 만들겠다! : NS : Next Step - 전통적인 방법
+    func itemDownloaded(items: NSMutableArray , locationcont: Int)
 }
 
 
 class QueryDetail{
-    //jsonmodel 이 portocol 을 가지고 잇어야 함!?
-    var delegate: QueryDetailProtocol! // data를 받아오는걸 연결하나!? ___ 나
+    
+    var delegate: QueryDetailProtocol!
     var urlPath = "\(Share.urlIP)Detail_song.jsp"
-    
-    
-    // 여기서 pid값을 받아온다
+   
     func DetaildownItems(pno: Int){
-       
-       
         let urlAdd = "?pno=\(pno)"
-        urlPath = urlPath + urlAdd // urlpath는 진짜 URL
+        urlPath = urlPath + urlAdd
         urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        // 서버에서 데이터 받아오는 동안 다른 일을 해야지!
-        print("\(urlPath)  여기는 QueryDetail urlPath야")
+        print("URL is : \(urlPath)")
         let url: URL = URL(string: urlPath)!
-        let defaultSession = Foundation.URLSession.init(configuration: URLSessionConfiguration.default) //Foundation은 지워도 된다
-        let task = defaultSession.dataTask(with: url){(data, response, error) in
-        
+        let defaultSession = URLSession(configuration: .default)
+        let task = defaultSession.dataTask(with: url){data, response, error in
             if error != nil{
                 print("Failed to download data")
             }else{
-                print("Data is downloaded") // 다운로드 된거로 json 으로 감?
-                self.parseJSON(data!) // 파싱을 만들자
+                self.parseJSON(data!)
             }
             
         }
@@ -45,57 +38,42 @@ class QueryDetail{
     }
     
     //어싱크 방식 은 dispatch 가 들어감
-    func parseJSON(_ data: Data){
+    func parseJSON(_ data: Data) {
         var jsonResult = NSArray()
         do{
             //swift 에서 json 쓰는 방법
             jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            //JSONSerialization.ReadingOptions 는 더블클릭!
-            //NSArray 가 변환이 쉬워서 [] 임
         }catch let error as NSError{
             print(error)
         }
         
-        var jsonElement = NSDictionary()  // json이 dictionary 모양이기 때문이다!
-        let locations = NSMutableArray()  // : ArrayList 라고 생각하면됨! <> NSArray
+        var jsonElement = NSDictionary()
+        let locations = NSMutableArray()
         
-        for i in 0..<jsonResult.count{// 결과를 한 묶음씩 알고있음
-            jsonElement = jsonResult[i] as! NSDictionary // jsonElement 가 NSDictionary 이므로
-            //왜 딕셔너리? json 파일이 변수명 : 값 으로 구성되어 있으므로
-            //집어넣기
-            if let name = jsonElement["name"] as? String, //scode 에는 S001 이 들어갈것임
-               let item = jsonElement["pitems"] as? String,
-                let memo = jsonElement["memo"] as? String,
-                let expirationDate = jsonElement["expirationDate"] as? String,
-                let image = jsonElement["image"] as? String
-               // json 에 있는 dept 키의 값을 가져옴
+        for i in 0..<jsonResult.count{
+            jsonElement = jsonResult[i] as! NSDictionary
+            if let name = jsonElement["name"] as? String,
+               let memo = jsonElement["memo"] as? String,
+               let expirationDate = jsonElement["expirationDate"] as? String,
+               let image = jsonElement["image"] as? String
             {
-                
-                //DBModel 로 Bean (데이터 받아서 _ 생성자 만들었었음)
-                let query = DBDetailModel(pname: name, item: item, memo: memo, expirationDate: expirationDate,image: image)
+                let query = DBDetailModel(
+                    pname: name,
+                    memo: memo,
+                    expirationDate: expirationDate,
+                    image: image)
                 locations.add(query)
-                print("\(name)여기는 QueryDetail에서 테스트 ")
-                print("\(query) 여기는 QueryDetail에서 테스트 ")
-               
-                
+            } else {
+                print("DATA is nil")
             }
-    
+            
         }
         let locationcont  =  locations.count
-        print("\(locationcont) QueryDetail 여기는 집합의 카운트를 세는 곳이야")
-//        print("\(locations)여기는 QueryModel에서 가져온 값들")
-//        //테이블 뷰도 실행되지만 얘도 동시에 실행되어야함 _ 어싱
-//
-//        if delegate == nil{
-//            print("닐값")
-//        }else{
         
-        //print("\(delegate) 여기는 delegate 확인하는곳")
         DispatchQueue.main.async(execute: {() -> Void in
             self.delegate.itemDownloaded(items: locations , locationcont: locationcont)
         })
         
-    
     }
 }
 

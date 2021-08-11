@@ -21,8 +21,8 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! SearchTableViewCell
         let item:DBSearchModel = feedItem[indexPath.row] as! DBSearchModel
         print(4)
-        let url = URL(string: "http://10.210.174.44:8080/schrodinger/images/\(item.image!)")
-        print("http://10.210.174.44:8080/schrodinger/images/\(item.image!)")
+        let url = URL(string: "http://192.168.2.2:8080/schrodinger/images/\(item.image!)")
+        print("http://192.168.2.2:8080/schrodinger/images/\(item.image!)")
         let data = try? Data(contentsOf: url!)
         cell.ImgView.image = UIImage(data: data!)
         print("사진 : \(item.image!)")
