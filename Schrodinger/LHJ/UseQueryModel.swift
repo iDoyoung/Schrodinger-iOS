@@ -12,7 +12,7 @@ protocol UseQueryModelProtocol{
 
 class UseQueryModel: NSObject {
         var delegate: UseQueryModelProtocol!
-        var urlPath = "http://192.168.2.2:8080/schrodinger/use_product_query_ios.jsp"
+        var urlPath = "http://\(Util.shared.api):8080/schrodinger/use_product_query_ios.jsp"
         
     func downloadItemed(name:String) -> Bool{
             var result: Bool = true

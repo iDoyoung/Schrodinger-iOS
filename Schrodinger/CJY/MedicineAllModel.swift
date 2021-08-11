@@ -30,6 +30,9 @@ class MedicineAllModel{
             }
             
             guard let data = data else {
+                DispatchQueue.main.async {
+                    self.delegate.itemDownloaded(items: [])
+                }
                 return
             }
                 print("Data is download")

@@ -5,8 +5,6 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - Firebase/Analytics (8.5.0):
-    - Firebase/Core
   - Firebase/Auth (8.5.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.5.0)
@@ -52,6 +50,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
+  - FSCalendar (2.8.2)
   - GoogleAppMeasurement (8.5.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.5.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -115,9 +114,9 @@ PODS:
   - PromisesObjC (2.0.0)
 
 DEPENDENCIES:
-  - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
+  - FSCalendar
   - GoogleSignIn
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -133,6 +132,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
+    - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleSignIn
@@ -154,6 +154,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 1c1ca72483b59b17050f5b4cec4fb748425a3901
   FirebaseCoreDiagnostics: 7bf55d386f9fc690d971b70a582142321a390eb8
   FirebaseInstallations: f2bc590b291d25fb40a9a05b8281c02a881b5117
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleAppMeasurement: 8d10c1c470fcb0e5143ed74fddd164f0a0384800
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleSignIn: 1b0c4ec33a6fe282f4fa35d8ac64263230ddaf36
@@ -166,6 +167,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 1b922fb1c6e9e9c655c672f9a5a0eccea1c9081e
+PODFILE CHECKSUM: af753fa598a51140a7475a0fac12ce0e25387d70
 
 COCOAPODS: 1.10.1

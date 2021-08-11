@@ -20,17 +20,20 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! SearchTableViewCell
         let item:DBSearchModel = feedItem[indexPath.row] as! DBSearchModel
-        print(4)
-        let url = URL(string: "http://192.168.2.2:8080/schrodinger/images/\(item.image!)")
-        print("http://192.168.2.2:8080/schrodinger/images/\(item.image!)")
-        let data = try? Data(contentsOf: url!)
-        cell.ImgView.image = UIImage(data: data!)
-        print("사진 : \(item.image!)")
+        DispatchQueue.global().async {
+            guard let url = URL(string: "http://\(Util.shared.api):8080/schrodinger/images/\(item.image!)") else { return }
+            guard let data = try? Data(contentsOf: url) else {
+                return
+            }
+            DispatchQueue.main.async {
+                cell.ImgView.image = UIImage(data: data)
+            }
+        }
+       
         cell.NameTitle?.text = "물품명 : \(item.name!)"
-        print("물품명 : \(item.name!)")
+        
         cell.Date?.text = "유통기간 : \(item.expirationDate!)"
-        print("유통기간 : \(item.expirationDate!)")
-        print(5)
+        
         return cell
     }
     
@@ -58,7 +61,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         SearchBar.translatesAutoresizingMaskIntoConstraints = true
         SearchBar.autoresizingMask = [.flexibleWidth]
         definesPresentationContext = true
-        print(1)
         // Do any additional setup after loading the view.
     }
     
@@ -67,7 +69,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let queryModel = SubmitQueryModel()
         queryModel.delegate = self
         queryModel.downloadItem(name: SearchBar.text!)
-            print(searchText)
         }
 
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -101,17 +102,17 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             let queryModel = SubmitQueryModel()
             queryModel.delegate = self
             queryModel.downloadItem(name: SearchBar.text!)
-            print(2)
+            
         }else if sender.selectedSegmentIndex == 1 {
             let queryModel = UseQueryModel()
             queryModel.delegate = self
             queryModel.downloadItemed(name: SearchBar.text!)
-            print(2)
+            
         }else if sender.selectedSegmentIndex == 2 {
             let queryModel = SearchQueryModel()
             queryModel.delegate = self
             queryModel.downloadItems(name: SearchBar.text!)
-            print(2)
+            
         }
     }
     
@@ -138,7 +139,6 @@ extension SearchViewController:UseQueryModelProtocol{
     func itemDownloaded(items: NSArray) {
         feedItem = items as! NSMutableArray
         self.listTableView.reloadData()
-        print(3)
     }
 }
 
@@ -146,7 +146,6 @@ extension SearchViewController:SearchQueryModelProtocol{
     func itemDownload(items: NSArray) {
         feedItem = items
         self.listTableView.reloadData()
-        print(3)
     }
 }
 
@@ -154,7 +153,6 @@ extension SearchViewController:SubmitQueryModelProtocol{
     func itemDownloads(items: NSArray) {
         feedItem = items as! NSMutableArray
         self.listTableView.reloadData()
-        print(3)
     }
 }
 

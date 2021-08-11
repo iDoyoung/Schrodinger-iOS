@@ -25,7 +25,7 @@ class MyPageViewController: UIViewController {
         infoLabel.text = myUserDefaults.string(forKey: "userEmail")
         
         // MARK: userEmailInsert 실행
-        self.userEmailInsert(myUserDefaults.string(forKey: "userEmail")!)
+        //self.userEmailInsert(myUserDefaults.string(forKey: "userEmail")!)
         
         // MARK: userNumberQuery 실행
         self.userNumberQuery()

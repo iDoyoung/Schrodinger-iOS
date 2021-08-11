@@ -27,6 +27,28 @@ struct Item: Codable {
     }
 }
 
+struct CalendarItem: Codable {
+    let id: String
+    let name: String
+    let date: String
+    let image: String?
+    let throwOut: String?
+    let used: String?
+    
+    enum CodingKeys: String, CodingKey{
+        case id = "pno"
+        case name = "name"
+        case date = "expirationDate"
+        case image = "image"
+        case throwOut = "throwDate"
+        case used = "useCompletionDate"
+    }
+}
+
+struct ResponseCalendarItem: Codable {
+    let items: [CalendarItem]
+}
+
 struct UseRatio: Codable {
     
     let throwOutCount: Int
