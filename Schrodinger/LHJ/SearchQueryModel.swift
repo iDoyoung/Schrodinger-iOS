@@ -12,7 +12,7 @@ protocol SearchQueryModelProtocol{
 
 class SearchQueryModel: NSObject {
         var delegate: SearchQueryModelProtocol!
-    var urlPath = "http://10.210.174.44:8080/schrodinger/product_query_ios.jsp"
+    var urlPath = "http://192.168.2.2:8080/schrodinger/product_query_ios.jsp"
         
     func downloadItems(name:String) -> Bool{
             var result: Bool = true

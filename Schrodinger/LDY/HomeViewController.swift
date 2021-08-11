@@ -33,9 +33,11 @@ class HomeViewController: UIViewController {
         checkTodayButton.addTarget(self, action: #selector(showTodayExpiredList), for: .touchUpInside)
     }
     
-    func applyRightNaviagatinItem() {
-        let profileSetButton = UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(profileActionSheet))
-        navigationItem.rightBarButtonItem = profileSetButton
+    func applyRightNaviagationItem() {
+        let profileSetButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileActionSheet))
+        let plusButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addItem))
+        navigationItem.rightBarButtonItem = plusButton
+        navigationItem.leftBarButtonItem = profileSetButton
     }
     
     var todayExpired = [Item]()
@@ -44,9 +46,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Success view did Load")
         applyLabel()
         applyButton()
-        applyRightNaviagatinItem()
+        applyRightNaviagationItem()
         expiredItemCollectionView.delegate = self
         expiredItemCollectionView.dataSource = self
         upcomingExpireCollectionView.delegate = self
@@ -108,6 +111,13 @@ class HomeViewController: UIViewController {
         actionSheet.addAction(deleteMyAccout)
         present(actionSheet, animated: true, completion: nil)
     }
+    
+    @objc func addItem() {
+        let storyboard = UIStoryboard(name: "HjYang", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "AddItemViewController") as! AddItemViewController
+        let destinationNAV = UINavigationController(rootViewController: destinationVC)
+        present(destinationNAV, animated: true, completion: nil)
+    }
 }
 
 //MARK: Extension CollectionView
@@ -120,6 +130,7 @@ extension HomeViewController: UICollectionViewDelegate {
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailItemViewController") as! DetailItemViewController
         
         if collectionView == expiredItemCollectionView {
+    
             receivepno = Int(self.expiredItem[indexPath.item].id)!
         } else {
             receivepno = Int(self.upcomingExpire[indexPath.item].id)!
