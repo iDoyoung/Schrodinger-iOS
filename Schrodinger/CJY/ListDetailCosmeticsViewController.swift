@@ -91,7 +91,18 @@ extension ListDetailCosmeticsViewController: UITableViewDataSource, UITableViewD
         print("==>", feedCosmeticsItem.count)
         return feedCosmeticsItem.count
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "JpSong", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailItemViewController") as! DetailItemViewController
+        let id = self.feedCosmeticsItem[indexPath.row] as! DBModel
+        receivepno = Int(id.pno!)
+        let destinationNAC = UINavigationController(rootViewController: destinationVC)
+        destinationNAC.modalPresentationStyle = .fullScreen
+        present(destinationNAC, animated: true, completion: nil)
+        
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TableViewCell

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+import KakaoSDKUser
 
 class HomeViewController: UIViewController {
 
@@ -98,13 +101,33 @@ class HomeViewController: UIViewController {
     @objc func profileActionSheet() {
         let actionSheet = UIAlertController(title: "Profile Preferences", message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let signOut = UIAlertAction(title: "", style: .default) { _ in
-            //MARK: TODO SET USERDEFAULT
-            print("Sign out")
+        let signOut = UIAlertAction(title: "Sign Out", style: .default) { _ in
+            //MARK: TODO SET DELETE ACCOUNT
+            UserApi.shared.unlink {(error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("unlink() success.")
+                    self.dismiss(animated: true)
+    //                Share.userID = "방문자"
+
+                }
+            }
+            myUserDefaults.set("방문자", forKey: "userEmail")
+            
+            // MARK: Google Login - LogOut
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                self.dismiss(animated: true)
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
+            
         }
         let deleteMyAccout = UIAlertAction(title: "Delete my account", style: .destructive) { _ in
-            //MARK: TODO SET DELETE ACCOUNT
-            print("Delete Account")
+            
         }
         actionSheet.addAction(cancel)
         actionSheet.addAction(signOut)
@@ -137,6 +160,7 @@ extension HomeViewController: UICollectionViewDelegate {
             receivepno = Int(self.upcomingExpire[indexPath.item].id)!
         }
         let destinationNAC = UINavigationController(rootViewController: destinationVC)
+        destinationNAC.modalPresentationStyle = .fullScreen
         present(destinationNAC, animated: true, completion: nil)
     }
 }

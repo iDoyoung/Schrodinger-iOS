@@ -10,6 +10,6 @@ import Foundation
 struct Util {
     static var shared = Util()
     
-    let api = "192.168.0.7"
+    let api = "192.168.2.6"
     var id = "1"
 }

@@ -41,14 +41,13 @@ class DetailItemViewController: UIViewController {
     var purchaselist: Array = Array<Any>() // DetailPurchase 디비에서 불러오는 값들을 항목에 넣어준다
     
     
-    
-    
+    @IBOutlet weak var shadowView: UIView!
     //메모 업데이트 버튼
     @IBOutlet weak var D_lbl_registered: UILabel! // 이미지 하단에 등록일 띄우는 곳
-    @IBOutlet weak var D_lbl_image: UILabel!      // 이미지 중앙에 상품 이름 띄운다
+    //@IBOutlet weak var D_lbl_image: UILabel!      // 이미지 중앙에 상품 이름 띄운다
     @IBOutlet weak var D_lbl_expirationDate: UILabel!  // 유통기한 날짜 편집에서 띄우는것
     @IBOutlet weak var D_imageview: UIImageView!     // 이미지뷰
-    @IBOutlet weak var D_lbl_item: UILabel!         // 현재 보유량
+    //@IBOutlet weak var D_lbl_item: UILabel!         // 현재 보유량
     @IBOutlet weak var D_lbl_throw: UILabel!          // 버린수 띄우기
     @IBOutlet weak var D_lbl_purchase: UILabel!       // 구매수
     @IBOutlet weak var D_tv_memo: UITextView!           // 메모
@@ -58,20 +57,42 @@ class DetailItemViewController: UIViewController {
     let purchaseModel = QueryPurchase()
     let queryThrow = QueryThrow()
     
+    //MARK: Navigation Bar Item
+    func updateNavBar() {
+        let backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(backTo))
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(performEdit))
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.title = "Detail"
+        navigationController?.navigationBar.tintColor = .systemGreen
+    }
+    
+    @objc func performEdit() {
+        performSegue(withIdentifier: "editSegue", sender: self)
+    }
+    @objc func backTo() {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        shadowView.layer.shadowOffset = .zero
+        shadowView.layer.shadowRadius = 6
+        shadowView.layer.shadowOpacity = 0.1
+        shadowView.layer.masksToBounds = false
+        
+        updateNavBar()
         model.delegate = self
         purchaseModel.delegate = self
         queryThrow.delegate = self
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewMapTapped))
         D_tv_memo.addGestureRecognizer(tapGestureRecognizer)
+        model.DetaildownItems(pno: receivepno)
     } //MARK: viewDidLoad
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        print("send data is \(receivepno)!")
-        model.DetaildownItems(pno: receivepno)
+       
     }//MARK: View Will Appear
     
     //MARK: 메모 클릭시 이벤트
@@ -83,7 +104,7 @@ class DetailItemViewController: UIViewController {
     // 네비게이션 정보 넘겨주기s
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "sgEdit"{
+        if segue.identifier == "editSegue"{
             
             let editviewcontroller = segue.destination as! EdictViewController
             editviewcontroller.imageFilepath = editimagrFilepath
@@ -94,8 +115,6 @@ class DetailItemViewController: UIViewController {
             //메모 텍스트 값 넘겨주기
             let Memoviewcontroller = segue.destination as! MemoViewController
             Memoviewcontroller.preparememo = "\(MemoSend)"
-            //Memoviewcontroller.delegate = self
-            
         }
     }
     
@@ -180,7 +199,7 @@ class DetailItemViewController: UIViewController {
     //MARK: Load UI
     func loadDetailUI() {
         let item: DBDetailModel = QueryDetailItem[0] as! DBDetailModel //item값이 들어가있음
-        D_lbl_item.text = ("\(item.pname ?? "ss")")
+        //D_lbl_item.text = ("\(item.pname ?? "ss")")
         
         if MemoSend == "" {
             MemoSend = "\(item.memo ?? "실패")"
@@ -198,7 +217,7 @@ class DetailItemViewController: UIViewController {
         D_imageview.image = UIImage(data: data!)
         D_lbl_expirationDate.text = "\(item.expirationDate ?? "실패")"
         pname = item.pname!
-        D_lbl_image.text = item.pname!
+        //D_lbl_image.text = item.pname!
     }
     
     //MARK: 버린수 구한거 출력
@@ -240,17 +259,17 @@ class DetailItemViewController: UIViewController {
     }
     
     // 메모 업데이트 실행 버튼
-    @IBAction func D_btn_memoUpdate(_ sender: UIBarButtonItem) {
-        memoUpdate()
-    }
-    
-    //메모 업데이트
-    func memoUpdate()  {
-        let memoUpdateModel = MemoUpdateModel()
-        let result = memoUpdateModel.MemoUpdateItems(pno: receivepno, memo: MemoSend)
-        resultAlert(result: result)
-        self.navigationController?.popViewController(animated: true)
-    }
+//    @IBAction func D_btn_memoUpdate(_ sender: UIBarButtonItem) {
+//        memoUpdate()
+//    }
+//    memoUpdate()
+//    //메모 업데이트
+//    func memoUpdate()  {
+//        let memoUpdateModel = MemoUpdateModel()
+//        let result = memoUpdateModel.MemoUpdateItems(pno: receivepno, memo: MemoSend)
+//        resultAlert(result: result)
+//        self.navigationController?.popViewController(animated: true)
+//    }
     
     
     
@@ -282,8 +301,6 @@ extension DetailItemViewController: QueryThrowProtocol{
 
         self.QueryTrowcount = locationcont
         Throw2 () // 가져온 값들을 출력
-        
-        //Purchase () // 구매수 구하기 위한 쿼리 시작
     }
 }
 

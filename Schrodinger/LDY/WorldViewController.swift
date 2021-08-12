@@ -91,7 +91,6 @@ class WorldViewController: UIViewController {
         APIService().performAllItemRequest { items in
             DispatchQueue.main.async {
                 self.items = items
-                print(self.items[0].category)
                 self.tableView.reloadData()
             }
         }

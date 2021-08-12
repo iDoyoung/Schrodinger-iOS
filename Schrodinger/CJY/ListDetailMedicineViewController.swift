@@ -80,6 +80,16 @@ extension ListDetailMedicineViewController: MedicineAllModelProtocol{
 // MARK: - extension : Table view data source
 extension ListDetailMedicineViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "JpSong", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailItemViewController") as! DetailItemViewController
+        let id = self.feedMedicineItem[indexPath.row] as! DBModel
+        receivepno = Int(id.pno!)
+        let destinationNAC = UINavigationController(rootViewController: destinationVC)
+        destinationNAC.modalPresentationStyle = .fullScreen
+        present(destinationNAC, animated: true, completion: nil)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
