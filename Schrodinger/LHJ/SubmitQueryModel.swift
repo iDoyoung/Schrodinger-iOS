@@ -16,9 +16,9 @@ class SubmitQueryModel: NSObject {
         
     func downloadItem(name:String) -> Bool{
             var result: Bool = true
-            let urlAddr = "?name=\(name)"
+            let urlAddr = "&name=\(name)"
             urlPath = urlPath + urlAddr
-
+            print(urlPath)
      
             //한글 url encoding
             urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

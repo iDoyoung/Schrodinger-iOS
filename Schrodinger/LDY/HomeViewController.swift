@@ -74,7 +74,9 @@ class HomeViewController: UIViewController {
         
         APIService().performUserItemRequest { items in
             //DispatchQueue.global().async {
-                self.todayExpired = items.filter{ $0.date == Date().toString() }
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+            self.todayExpired = items.filter{ $0.date == formatter.string(from: Date()) }
                 let todayExpiredNames = self.todayExpired.map { $0.name }
                 self.upcomingExpire = items.filter{ Date() >= $0.date.toDate().beforeOneWeek() && $0.date.toDate() > Date()}
                 self.expiredItem = items.filter{ $0.date.toDate() <= Date() }
@@ -91,9 +93,11 @@ class HomeViewController: UIViewController {
     @objc func showTodayExpiredList() {
         let storyboard = UIStoryboard(name: "DyLee", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "CheckTodayViewController") as! CheckTodayViewController
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         
         APIService().performUserItemRequest { items in
-            destinationVC.expiredItem = items.filter{ $0.date == Date().toString() }
+            destinationVC.expiredItem = items.filter{ $0.date == formatter.string(from: Date()) }
         }
         present(destinationVC, animated: true, completion: nil)
     }

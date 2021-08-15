@@ -24,7 +24,7 @@ class DetailItemViewController: UIViewController {
     var memo = ""
     var CurrenteDate = ""   // 현재날짜 넣기
     var editimagrFilepath = "" // 이미지 파이주소 넘기기
-    var Buttoncount = 0 // useall , Throw 버튼
+//    var Buttoncount = 0 // useall , Throw 버튼
     var QueryDetailcount = 0//QuertDetail에서 가져온 값들의 카운트
     var QueryTrowcount = 0//QuertThrow에서 가져온 값들의 카운트
     var QueryPurchasecount = 0//QuertThrow에서 가져온 값들의 카운트
@@ -125,39 +125,50 @@ class DetailItemViewController: UIViewController {
         let formatter = DateFormatter(); formatter.dateFormat = "yyyy-MM-dd"
         CurrenteDate = "\(formatter.string(from: Date()))"
         
-        
-        //Action
-        switch Buttoncount {
-        case 0 :
-            
-            let actionDefault = UIAlertAction(title: "Use all", style: .default, handler:  { [self]ACTION in D_btntf_commplete.setTitle("Use all", for: .normal); Buttoncount = 1;})
-            let actionDestruction = UIAlertAction(title: "Throw away", style: .default, handler:  { [self]ACTION in D_btntf_commplete.setTitle("Throw away", for: .normal); Buttoncount = 2} )
-            
-            let actionCancel = UIAlertAction(title: "Cancel", style: .destructive, handler:  { [self]ACTION in D_btntf_commplete.setTitle("Cancel", for: .normal); Buttoncount = 0} )
-            
-            // Controller와 Action 걀합
-            testAlert.addAction(actionDefault)
-            testAlert.addAction(actionDestruction)
-            testAlert.addAction(actionCancel)
-            
-            //화면 띄우기
-            present(testAlert, animated: true, completion: nil)
-            
-        case  1 : useallDate()
-            
-        case  2 : throwDate()
-            
-        default: break
-            
+        let useAll = UIAlertAction(title: "Use all", style: .default) { _ in
+            self.useallDate()
         }
+        let throwAway = UIAlertAction(title: "Throw away", style: .destructive) { _ in
+            self.throwDate()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        testAlert.addAction(useAll)
+        testAlert.addAction(throwAway)
+        testAlert.addAction(cancel)
+        present(testAlert, animated: true, completion: nil)
+        //Action
+//        switch Buttoncount {
+//        case 0 :
+//
+//            let actionDefault = UIAlertAction(title: "Use all", style: .default, handler:  { [self]ACTION in D_btntf_commplete.setTitle("Use all", for: .normal); Buttoncount = 1;})
+//            let actionDestruction = UIAlertAction(title: "Throw away", style: .default, handler:  { [self]ACTION in D_btntf_commplete.setTitle("Throw away", for: .normal); Buttoncount = 2} )
+//
+//            let actionCancel = UIAlertAction(title: "Cancel", style: .destructive, handler:  { [self]ACTION in D_btntf_commplete.setTitle("Cancel", for: .normal); Buttoncount = 0} )
+//
+//            // Controller와 Action 걀합
+//            testAlert.addAction(actionDefault)
+//            testAlert.addAction(actionDestruction)
+//            testAlert.addAction(actionCancel)
+//
+//            //화면 띄우기
+//            present(testAlert, animated: true, completion: nil)
+//
+//        case  1 : useallDate()
+//
+//        case  2 : throwDate()
+//
+//        default: break
+//
+//        }
     }
     //MARK: 버린 날짜 입력 함수
     func useallDate()  {
         let useAllModel = UseAllModel()
         let result = useAllModel.UseAllItems(u_user_no: receiveuno, u_product_no: receivepno, useCompletionDate: CurrenteDate, pname: pname)
         resultAlert(result: result)
-        Buttoncount = 0 // 다시 초기화
-        self.navigationController?.popViewController(animated: true)
+        //Buttoncount = 0 // 다시 초기화
+        //self.dismiss(animated: true, completion: nil)
+        //self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: 사용완료 날짜 입력 함수
@@ -165,17 +176,18 @@ class DetailItemViewController: UIViewController {
         let throwModel = ThrowModel()
         let result = throwModel.ThrowItems(u_user_no: receiveuno, u_product_no: receivepno, throwDate: CurrenteDate, pname: pname)
         resultAlert(result: result)
-        Buttoncount = 0 // 다시 초기화
-        self.navigationController?.popViewController(animated: true)
+        //Buttoncount = 0 // 다시 초기화
+        //self.navigationController?.popViewController(animated: true)
     }
     
     
     //MARK: 버린날짜, 사용완료 Alert 중복
     func resultAlert(result: Bool) {
         if result {
-            let resultAlert = UIAlertController(title: "완료", message: "수정되었습니다", preferredStyle: .alert)
+            let resultAlert = UIAlertController(title: "완료", message: "처리하였습니다.", preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .default, handler: { ACTION in
-                self.navigationController?.popViewController(animated: true)
+                //self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             })
             resultAlert.addAction(onAction)
             present(resultAlert, animated: true, completion: nil)
@@ -183,7 +195,8 @@ class DetailItemViewController: UIViewController {
         }else{
             let resultAlert = UIAlertController(title: "실패", message: "에러가 발생했습니다", preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .default, handler: { ACTION in
-                self.navigationController?.popViewController(animated: true)
+                //self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             })
             
             resultAlert.addAction(onAction)
@@ -247,8 +260,8 @@ class DetailItemViewController: UIViewController {
     //MARK: 등록 날짜 구하기
     func registration () { //
         let  registrationdateModel =  RegistrationdateModel()
-        //registrationdateModel.delegate = self
-        //registrationdateModel.RegistrationdatedownloadItems(s_product_no: receivepno, s_user_no: receiveuno)
+        registrationdateModel.delegate = self
+        registrationdateModel.RegistrationdatedownloadItems(s_product_no: receivepno, s_user_no: receiveuno)
         //print("여기는 viewcontrioller인데 registration로 들어가는 곳")
         
     }

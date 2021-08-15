@@ -32,7 +32,6 @@ class UseAllModel{
                 print("Data is insert") // 다운로드 된거로 json 으로 감?
                 result = true
             }
-            
         }
         
         task.resume() //resume을 실해하면 json으로 데이터를 가져온다

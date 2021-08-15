@@ -11,7 +11,7 @@ class PieChart: UIView {
     
     var start: CGFloat = (-(.pi) / 2)
     var end: CGFloat = 0.0
-    var values = [50, 50]
+    var values = [85, 30]
     let pieLabel = ["Use All", "Throw away"]
     var currentIndex = 0
     var pieCenter = CGPoint.zero

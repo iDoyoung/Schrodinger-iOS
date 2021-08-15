@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 import FSCalendar
 
 class CalendarViewController: UIViewController {
@@ -15,6 +16,7 @@ class CalendarViewController: UIViewController {
     
     var items = [CalendarItem]()
     var chooseDateItems = [CalendarItem]()
+    let formatter = DateFormatter()
     
     func chooseDate(date: String) {
         chooseDateItems = items.filter{ $0.date == date}
@@ -22,17 +24,21 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendarView.delegate = self
+        calendarView.dataSource = self
+        tableView.dataSource = self
+        
+        formatter.dateStyle = .short
+        formatter.dateFormat = "yyyy-MM-dd"
+        
         APIService().performCalendarRequest { items in
             DispatchQueue.main.async {
                 self.items = items
-                self.chooseDate(date: Date().toString())
+                self.chooseDate(date: self.formatter.string(from: Date()))
                 self.calendarView.reloadData()
                 self.tableView.reloadData()
             }
         }
-        calendarView.delegate = self
-        calendarView.dataSource = self
-        tableView.dataSource = self
     }
 
 }
@@ -68,11 +74,17 @@ extension CalendarViewController: UITableViewDataSource {
 extension CalendarViewController: FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        chooseDate(date: date.toString())
-        tableView.reloadData()
+        
+        formatter.dateStyle = .short
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        chooseDate(date: formatter.string(from: date))
+        self.tableView.reloadData()
     }
     
 }
+    
+
 
 extension CalendarViewController: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -84,6 +96,7 @@ extension CalendarViewController: FSCalendarDataSource {
         }
     }
 }
+
 class CellOfCalendar: UITableViewCell {
     
     @IBOutlet weak var itemName: UILabel!

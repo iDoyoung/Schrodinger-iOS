@@ -39,15 +39,15 @@ extension CheckTodayViewController: UITableViewDataSource {
         }
         
         cell.textLabel?.text = expiredItem[indexPath.item].name
-        DispatchQueue.global().async {
-            guard let url = URL(string: "\(APIService().imageURL)\(self.expiredItem[indexPath.row].image!)") else { return }
-            guard let data = try? Data(contentsOf: url) else { return }
+        //DispatchQueue.global().async {
+            guard let url = URL(string: "\(APIService().imageURL)\(self.expiredItem[indexPath.row].image!)") else { return cell}
+            guard let data = try? Data(contentsOf: url) else { return cell}
             
             let image = UIImage(data: data)
-            DispatchQueue.main.async {
+            //DispatchQueue.main.async {
                 cell.imageView?.image = image
-            }
-        }
+            //}
+        //}
         
         return cell
     }

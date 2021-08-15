@@ -19,7 +19,7 @@ class  RegistrationdateModel{
     
     
     // 여기서 pid값을 받아온다
-    func RegistrationdatedownloadItems(s_product_no: Int, s_user_no: Int){
+    func RegistrationdatedownloadItems(s_product_no: Int, s_user_no: String){
        
         print("\(s_product_no) QueryPurchase 여기는 이름값이 잘들어갔는지 확인하는 곳")
         print("\(s_user_no) QueryPurchase 여기는 u_user_no값이 잘들어갔는지 확인하는 곳")

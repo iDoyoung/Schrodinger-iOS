@@ -16,7 +16,7 @@ class UseQueryModel: NSObject {
         
     func downloadItemed(name:String) -> Bool{
             var result: Bool = true
-            let urlAddr = "?name=\(name)"
+            let urlAddr = "&name=\(name)"
             urlPath = urlPath + urlAddr
 
      
