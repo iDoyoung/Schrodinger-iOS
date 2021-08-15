@@ -11,7 +11,7 @@ import GoogleSignIn
 import KakaoSDKUser
 
 class HomeViewController: UIViewController {
-
+// Check
 //MARK: View
     @IBOutlet weak var firstSectionTitle: UILabel!
     @IBOutlet weak var todayExpiredItem: UILabel!
