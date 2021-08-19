@@ -8,7 +8,9 @@
 import Foundation
 
 struct Util {
+    
     static let shared = Util()
     
-    let api = "192.168.0.7"
+    let api = "API"
+    
 }
